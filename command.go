@@ -45,7 +45,13 @@ func (c *Command) Run(args ...string) error {
 	// first pass; include files
 	next(func() { incfile(w, r, "<>") })
 
+	// parse links early
+	var links map[string]string
+	next(func() { links = parselinks(w, r) })
+
 	next(func() { dropcomments(w, r) })
+
+	next(func() { rfcindent(w, r) })
 
 	// second pass; parse toc and index sections
 	var toc bytes.Buffer
@@ -53,10 +59,6 @@ func (c *Command) Run(args ...string) error {
 
 	// insert toc
 	next(func() { inserttoc(w, r, &toc) })
-
-	// parse links
-	var links map[string]string
-	next(func() { links = parselinks(w, r) })
 
 	// replace links, also includes reference links
 	next(func() { replacelinks(w, r, links) })
