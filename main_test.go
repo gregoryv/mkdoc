@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"fmt"
 	"io"
 	"io/ioutil"
 	"os"
@@ -50,6 +51,19 @@ func Test(t *testing.T) {
 	})
 
 	t.Run("", func(t *testing.T) {
+		req := "warn on missing file"
+		var e bytes.Buffer
+		r := strings.NewReader("<incfile nosuch.txt>")
+
+		txtfmt(&e, w, r)
+
+		got := e.String()
+		if got == "" {
+			t.Error(fail(req, "empty"))
+		}
+	})
+
+	t.Run("", func(t *testing.T) {
 		_ = "already anchored links SHOULD be ignored"
 		r := strings.NewReader(`... [<a href="#x">text</a>] .. `)
 		txtfmt(e, w, r)
@@ -64,4 +78,24 @@ func load(filename string) io.Reader {
 		panic(err.Error())
 	}
 	return bytes.NewReader(data)
+}
+
+func fail(req string, err any) string {
+	return fmt.Sprintln("\nreq:", req, "\nerr:", err)
+}
+
+func contains(txt string, substr ...string) error {
+	for _, str := range substr {
+		if !strings.Contains(txt, str) {
+			return fmt.Errorf("missing %q\ngot: %s", str, txt)
+		}
+	}
+	return nil
+}
+
+func compare(got, exp string) error {
+	if got != exp {
+		return fmt.Errorf("not equal\ngot:\n%s\nexp:\n%s", got, exp)
+	}
+	return nil
 }
