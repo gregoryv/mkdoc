@@ -47,7 +47,11 @@ func (c *Command) Run(args ...string) error {
 	var third bytes.Buffer
 	inserttoc(&third, &second, &toc)
 
-	last := third
+	// parse links
+	var fourth bytes.Buffer
+	_ = parselinks(&fourth, &third)
+
+	last := fourth
 	io.Copy(c.out, &last)
 	return nil
 }
