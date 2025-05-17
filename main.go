@@ -10,13 +10,11 @@ import (
 )
 
 func main() {
-	err := txtfmt(os.Stdout, os.Stdin)
-	if err != nil {
-		handleError(err)
-	}
+	log.SetFlags(0)
+	txtfmt(os.Stderr, os.Stdout, os.Stdin)
 }
 
-func txtfmt(out io.Writer, in io.Reader) error {
+func txtfmt(err, out io.Writer, in io.Reader) {
 	w := &bytes.Buffer{}
 	r := &bytes.Buffer{}
 	io.Copy(r, in)
@@ -52,7 +50,6 @@ func txtfmt(out io.Writer, in io.Reader) error {
 <meta charset="utf-8">
 <pre>`)
 	io.Copy(out, r)
-	return nil
 }
 
 type stepFn func()

@@ -2,7 +2,6 @@ package main
 
 import (
 	"bytes"
-	"fmt"
 	"io"
 	"io/ioutil"
 	"os"
@@ -14,55 +13,48 @@ import (
 
 func Test(t *testing.T) {
 	t.Run("", func(t *testing.T) {
-		req := "No arguments SHOULD do nothing"
+		_ = "No arguments SHOULD do nothing"
 		os.Args = []string{""} // first arg is command name
 		before := handleError
 		defer func() { handleError = before }()
 
-		handleError = func(v ...any) { t.Fatal(req, v) }
+		handleError = func(v ...any) { t.Fatal(v) }
 		main()
 	})
 
+	e := ioutil.Discard
 	w := ioutil.Discard
 	r := strings.NewReader("")
 
 	t.Run("", func(t *testing.T) {
-		req := "Format empty input SHOULD do nothing"
-
-		err := txtfmt(w, r)
-		if err != nil {
-			t.Error(fail(req, err))
-		}
+		_ = "Format empty input SHOULD do nothing"
+		txtfmt(e, w, r)
 	})
 
 	t.Run("", func(t *testing.T) {
-		req := "By default HTML SHOULD be written to stdout"
+		_ = "By default HTML SHOULD be written to stdout"
 		var w bytes.Buffer
 		os.Chdir("testdata")
 		r := load("example.txt")
 
-		err := txtfmt(&w, r)
-		if err != nil {
-			t.Fatal(fail(req, err))
-		}
+		txtfmt(e, &w, r)
 		golden.AssertWith(t, w.String(), "out.html")
 	})
 
 	t.Run("", func(t *testing.T) {
-		req := "missing closing bracket in link SHOULD fail"
+		_ = "missing closing bracket in link SHOULD warn"
 		r := strings.NewReader("... [text ")
-		err := txtfmt(w, r)
-		if err != nil {
-			t.Error(fail(req, err))
-		}
+		txtfmt(e, w, r)
+	})
+
+	t.Run("", func(t *testing.T) {
+		_ = "already anchored links SHOULD be ignored"
+		r := strings.NewReader(`... [<a href="#x">text</a>] .. `)
+		txtfmt(e, w, r)
 	})
 }
 
 // ----------------------------------------
-
-func fail(req string, err error) string {
-	return fmt.Sprintln("\nreq:", req, "\nerr:", err)
-}
 
 func load(filename string) io.Reader {
 	data, err := os.ReadFile(filename)
