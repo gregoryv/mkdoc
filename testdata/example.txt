@@ -49,6 +49,9 @@ read
 
     "[Text]: URL"
 
+Example:
+
+    ... [example.com] ...
 
 Reference links SHOULD be written within square brackets.
 

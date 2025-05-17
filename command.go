@@ -49,9 +49,12 @@ func (c *Command) Run(args ...string) error {
 
 	// parse links
 	var fourth bytes.Buffer
-	_ = parselinks(&fourth, &third)
+	links := parselinks(&fourth, &third)
 
-	last := fourth
-	io.Copy(c.out, &last)
+	// replace links
+	var fifth bytes.Buffer
+	replacelinks(&fifth, &fourth, links)
+
+	io.Copy(c.out, &fifth)
 	return nil
 }
