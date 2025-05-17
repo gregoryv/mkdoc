@@ -20,7 +20,7 @@ func dropcomments(w io.Writer, r io.Reader) {
 				inside = false
 				continue
 			}
-			continue // skip line
+			continue // skip line, ie. multiline comment
 		}
 
 		i := strings.Index(line, "<!--")
