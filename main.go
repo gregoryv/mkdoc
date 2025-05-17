@@ -15,6 +15,7 @@ func main() {
 }
 
 func txtfmt(err, out io.Writer, in io.Reader) {
+	log.SetOutput(err)
 	w := &bytes.Buffer{}
 	r := &bytes.Buffer{}
 	io.Copy(r, in)
@@ -45,13 +46,15 @@ func txtfmt(err, out io.Writer, in io.Reader) {
 	// replace links, also includes reference links
 	next(func() { replacelinks(w, r, links) })
 
-	fmt.Fprintln(out, `<!DOCTYPE html>
-
-<meta charset="utf-8">
-<pre>`)
+	fmt.Fprintln(out, htmlHeader)
 	io.Copy(out, r)
 }
 
 type stepFn func()
 
 var handleError = log.Fatal
+
+const htmlHeader = `<!DOCTYPE html>
+
+<meta charset="utf-8">
+<pre>`
