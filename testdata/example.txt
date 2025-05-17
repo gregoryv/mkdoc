@@ -10,7 +10,7 @@ Keep it simple is the mantra.<!-- also dropped -->
 
 Table of Contents
 
-<!-- automatically included here by txtfmt -->
+<!-- automatically included here by mkdoc -->
 
 §1 Introduction
 

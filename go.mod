@@ -1,4 +1,4 @@
-module github.com/gregoryv/main
+module github.com/gregoryv/mkdoc
 
 go 1.23.4
 

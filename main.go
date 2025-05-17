@@ -9,7 +9,7 @@ import (
 	"os"
 )
 
-var usage = `Usage: txtfmt < input.txt
+var usage = `Usage: mkdoc < input.txt
 
 A text processing tool to generate RFC like documents
 from plain text files.
@@ -19,7 +19,7 @@ to generate an almost WYSIWYG HTML output for easy publishing.
 
 For example input refer to
 
-  https://github.com/gregoryv/txtfmt/testdata/example.txt
+  https://github.com/gregoryv/mkdoc/testdata/example.txt
 
 Happy coding,
   Gregory Vincic
@@ -32,10 +32,10 @@ func main() {
 		return
 	}
 
-	txtfmt(os.Stderr, os.Stdout, os.Stdin)
+	mkdoc(os.Stderr, os.Stdout, os.Stdin)
 }
 
-func txtfmt(err, out io.Writer, in io.Reader) {
+func mkdoc(err, out io.Writer, in io.Reader) {
 	log.SetOutput(err)
 	w := &bytes.Buffer{}
 	r := &bytes.Buffer{}

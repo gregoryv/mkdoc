@@ -1,4 +1,4 @@
-txtfmt - text to html for plain text documents
+mkdoc - text to html for plain text documents
 
 # Features
 

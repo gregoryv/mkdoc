@@ -39,7 +39,7 @@ func Test(t *testing.T) {
 
 	t.Run("", func(t *testing.T) {
 		_ = "Format empty input SHOULD do nothing"
-		txtfmt(e, w, r)
+		mkdoc(e, w, r)
 	})
 
 	t.Run("", func(t *testing.T) {
@@ -49,7 +49,7 @@ func Test(t *testing.T) {
 		os.Chdir("testdata")
 		r := load("example.txt")
 
-		txtfmt(&e, &w, r)
+		mkdoc(&e, &w, r)
 		golden.AssertWith(t, w.String(), "out.html")
 		golden.AssertWith(t, e.String(), "err.html")
 	})
@@ -57,7 +57,7 @@ func Test(t *testing.T) {
 	t.Run("", func(t *testing.T) {
 		_ = "missing closing bracket in link SHOULD warn"
 		r := strings.NewReader("... [text ")
-		txtfmt(e, w, r)
+		mkdoc(e, w, r)
 	})
 
 	t.Run("", func(t *testing.T) {
@@ -65,7 +65,7 @@ func Test(t *testing.T) {
 		var e bytes.Buffer
 		r := strings.NewReader("<incfile nosuch.txt>")
 
-		txtfmt(&e, w, r)
+		mkdoc(&e, w, r)
 
 		got := e.String()
 		if got == "" {
@@ -76,7 +76,7 @@ func Test(t *testing.T) {
 	t.Run("", func(t *testing.T) {
 		_ = "already anchored links SHOULD be ignored"
 		r := strings.NewReader(`... [<a href="#x">text</a>] .. `)
-		txtfmt(e, w, r)
+		mkdoc(e, w, r)
 	})
 }
 
