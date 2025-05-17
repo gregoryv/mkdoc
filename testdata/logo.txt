@@ -1,0 +1,33 @@
+         tttt                                       tttt             
+      ttt:::t                                    ttt:::t             
+      t:::::t                                    t:::::t             
+      t:::::t                                    t:::::t             
+ttttttt:::::ttttttt    xxxxxxx      xxxxxxxttttttt:::::ttttttt       
+t:::::::::::::::::t     x:::::x    x:::::x t:::::::::::::::::t       
+t:::::::::::::::::t      x:::::x  x:::::x  t:::::::::::::::::t       
+tttttt:::::::tttttt       x:::::xx:::::x   tttttt:::::::tttttt       
+      t:::::t              x::::::::::x          t:::::t             
+      t:::::t               x::::::::x           t:::::t             
+      t:::::t               x::::::::x           t:::::t             
+      t:::::t    tttttt    x::::::::::x          t:::::t    tttttt   
+      t::::::tttt:::::t   x:::::xx:::::x         t::::::tttt:::::t   
+      tt::::::::::::::t  x:::::x  x:::::x        tt::::::::::::::t   
+        tt:::::::::::tt x:::::x    x:::::x         tt:::::::::::tt   
+          ttttttttttt  xxxxxxx      xxxxxxx          ttttttttttt     
+    ffffffffffffffff                                   tttt          
+   f::::::::::::::::f                               ttt:::t          
+  f::::::::::::::::::f                              t:::::t          
+  f::::::fffffff:::::f                              t:::::t          
+  f:::::f       ffffff   mmmmmmm    mmmmmmm   ttttttt:::::ttttttt    
+  f:::::f              mm:::::::m  m:::::::mm t:::::::::::::::::t    
+ f:::::::ffffff       m::::::::::mm::::::::::mt:::::::::::::::::t    
+ f::::::::::::f       m::::::::::::::::::::::mtttttt:::::::tttttt    
+ f::::::::::::f       m:::::mmm::::::mmm:::::m      t:::::t          
+ f:::::::ffffff       m::::m   m::::m   m::::m      t:::::t          
+  f:::::f             m::::m   m::::m   m::::m      t:::::t          
+  f:::::f             m::::m   m::::m   m::::m      t:::::t    tttttt
+ f:::::::f            m::::m   m::::m   m::::m      t::::::tttt:::::t
+ f:::::::f            m::::m   m::::m   m::::m      tt::::::::::::::t
+ f:::::::f            m::::m   m::::m   m::::m        tt:::::::::::tt
+ fffffffff            mmmmmm   mmmmmm   mmmmmm          ttttttttttt
+ 

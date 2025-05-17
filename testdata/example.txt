@@ -1,0 +1,63 @@
+<incfile logo.txt>
+
+Abstract
+
+Keep it simple is the mantra.
+
+
+Table of Contents
+
+
+§1 Introduction
+
+Documenting concepts and ideas using plain text documents.  In
+particular in software design, specifications need to be concise and
+correct.
+
+§1.1 Purpose
+
+Specify minimal format rules to plain text documents which enables
+developers to use simple processing tools when producing the final
+document. The final document in this context is a preformatted HTML
+file.
+
+§2 Format Rules
+
+The rules are meant to aid writers in maintaining focus on their
+content.
+
+§2.1 Links
+
+Sections SHOULD start with the § sign followed by a level and a
+heading.
+
+    §9.1.5 Example Heading
+
+Section links SHOULD be written within parentheses.
+
+    "... link format rules (&sect;2.1)."
+
+When processing the § sign SHOULD be replaced with the word
+'section'.
+
+    "... links (§2.1) ..."
+
+Plain links SHOULD be written within square brackets and URL's
+defined at the end of a document. Each line in the links file SHOULD
+read
+
+    "[Text]: URL"
+
+
+Reference links SHOULD be written within square brackets.
+
+    "... see [1]."
+
+
+§3 References
+
+[1] This part is describe in ...
+
+
+// links are excluded from final output, as are these comments
+[example.com]: https://example.com
