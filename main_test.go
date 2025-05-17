@@ -47,6 +47,15 @@ func Test(t *testing.T) {
 		}
 		golden.AssertWith(t, w.String(), "out.html")
 	})
+
+	t.Run("", func(t *testing.T) {
+		req := "missing closing bracket in link SHOULD fail"
+		r := strings.NewReader("... [text ")
+		err := txtfmt(w, r)
+		if err != nil {
+			t.Error(fail(req, err))
+		}
+	})
 }
 
 // ----------------------------------------
