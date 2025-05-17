@@ -8,3 +8,4 @@ txtfmt - text to html for plain text documents
 - RFC like table of contents generation
 - Go doc link like processing
 - Section indicator '§' followed by numbered levels
+- HTML comment exclusion
