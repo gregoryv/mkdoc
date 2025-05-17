@@ -45,6 +45,8 @@ func (c *Command) Run(args ...string) error {
 	// first pass; include files
 	next(func() { incfile(w, r, "<>") })
 
+	next(func() { dropcomments(w, r) })
+
 	// second pass; parse toc and index sections
 	var toc bytes.Buffer
 	next(func() { parsetoc(w, &toc, r, *cols) })

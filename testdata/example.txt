@@ -63,5 +63,5 @@ Reference links SHOULD be written within square brackets.
 [1] This part is describe in ...
 
 
-// links are excluded from final output, as are these comments
+<!-- links are excluded from final output -->
 [example.com]: https://example.com
