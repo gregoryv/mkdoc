@@ -38,7 +38,11 @@ func (c *Command) Run(args ...string) error {
 	var first bytes.Buffer
 	incfile(&first, c.in, "<>")
 
-	last := first
+	var toc bytes.Buffer
+	var second bytes.Buffer
+	parsetoc(&second, &toc, &first, *cols)
+
+	last := second
 	io.Copy(c.out, &last)
 	return nil
 }
