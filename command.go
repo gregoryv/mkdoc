@@ -3,6 +3,7 @@ package txtfmt
 import (
 	"bytes"
 	"flag"
+	"fmt"
 	"io"
 	"io/ioutil"
 	"strings"
@@ -63,6 +64,10 @@ func (c *Command) Run(args ...string) error {
 	// replace links, also includes reference links
 	next(func() { replacelinks(w, r, links) })
 
+	fmt.Fprintln(c.out, `<!DOCTYPE html>
+
+<meta charset="utf-8">
+<pre>`)
 	io.Copy(c.out, r)
 	return nil
 }

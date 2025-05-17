@@ -1,4 +1,4 @@
-<incfile header.html>
+<!-- a basic html header is automatically inserted at the top -->
 <incfile logo.txt>
 
 Abstract
