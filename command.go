@@ -34,27 +34,33 @@ func (c *Command) Run(args ...string) error {
 	}
 	_ = cols
 
+	w := &bytes.Buffer{}
+	r := &bytes.Buffer{}
+	io.Copy(r, c.in)
+	next := func(step func()) {
+		step()
+		io.Copy(r, w)
+	}
+
 	// first pass; include files
-	var first bytes.Buffer
-	incfile(&first, c.in, "<>")
+	next(func() { incfile(w, r, "<>") })
 
 	// second pass; parse toc and index sections
 	var toc bytes.Buffer
-	var second bytes.Buffer
-	parsetoc(&second, &toc, &first, *cols)
+	next(func() { parsetoc(w, &toc, r, *cols) })
 
 	// insert toc
-	var third bytes.Buffer
-	inserttoc(&third, &second, &toc)
+	next(func() { inserttoc(w, r, &toc) })
 
 	// parse links
-	var fourth bytes.Buffer
-	links := parselinks(&fourth, &third)
+	var links map[string]string
+	next(func() { links = parselinks(w, r) })
 
-	// replace links
-	var fifth bytes.Buffer
-	replacelinks(&fifth, &fourth, links)
+	// replace links, also includes reference links
+	next(func() { replacelinks(w, r, links) })
 
-	io.Copy(c.out, &fifth)
+	io.Copy(c.out, r)
 	return nil
 }
+
+type stepFn func()

@@ -21,7 +21,8 @@ func incfile(w io.Writer, r io.Reader, delim string) {
 			f = strings.TrimSpace(f)
 			fh, err := os.Open(f)
 			if err != nil {
-				log.Fatal(err)
+				log.Print(err)
+				continue
 			}
 			io.Copy(w, fh)
 			fh.Close()
