@@ -12,24 +12,17 @@ import (
 	"github.com/gregoryv/golden"
 )
 
-func Test_main(t *testing.T) {
+func Test(t *testing.T) {
 	t.Run("", func(t *testing.T) {
 		req := "No arguments SHOULD do nothing"
 		os.Args = []string{""} // first arg is command name
-		var failed bool
-		handleError = func(v ...any) {
-			t.Log(v)
-			failed = true
-		}
+		before := handleError
+		defer func() { handleError = before }()
 
+		handleError = func(v ...any) { t.Fatal(req, v) }
 		main()
-		if failed {
-			t.Error(req)
-		}
 	})
-}
 
-func Test(t *testing.T) {
 	w := ioutil.Discard
 	r := strings.NewReader("")
 
