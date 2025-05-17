@@ -33,12 +33,14 @@ func Test(t *testing.T) {
 
 	t.Run("", func(t *testing.T) {
 		_ = "By default HTML SHOULD be written to stdout"
+		var e bytes.Buffer
 		var w bytes.Buffer
 		os.Chdir("testdata")
 		r := load("example.txt")
 
-		txtfmt(e, &w, r)
+		txtfmt(&e, &w, r)
 		golden.AssertWith(t, w.String(), "out.html")
+		golden.AssertWith(t, e.String(), "err.html")
 	})
 
 	t.Run("", func(t *testing.T) {
