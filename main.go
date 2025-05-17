@@ -9,8 +9,29 @@ import (
 	"os"
 )
 
+var usage = `Usage: txtfmt < input.txt
+
+A text processing tool to generate RFC like documents
+from plain text files.
+
+The goals is using simple plain text rules, optimised for writing
+to generate an almost WYSIWYG HTML output for easy publishing.
+
+For example input refer to
+
+  https://github.com/gregoryv/txtfmt/testdata/example.txt
+
+Happy coding,
+  Gregory Vincic
+`
+
 func main() {
 	log.SetFlags(0)
+	if len(os.Args) > 1 {
+		handleError(usage)
+		return
+	}
+
 	txtfmt(os.Stderr, os.Stdout, os.Stdin)
 }
 

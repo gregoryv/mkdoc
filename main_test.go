@@ -14,6 +14,16 @@ import (
 
 func Test(t *testing.T) {
 	t.Run("", func(t *testing.T) {
+		_ = "Any argument SHOULD display usage"
+		os.Args = []string{"", "--help"} // first arg is command name
+		before := handleError
+		defer func() { handleError = before }()
+
+		handleError = func(v ...any) { t.Log(v) }
+		main()
+	})
+
+	t.Run("", func(t *testing.T) {
 		_ = "No arguments SHOULD do nothing"
 		os.Args = []string{""} // first arg is command name
 		before := handleError
