@@ -36,13 +36,14 @@ func Test(t *testing.T) {
 		cmd := NewCommand()
 		var stdout bytes.Buffer
 		cmd.SetOut(&stdout)
-		cmd.SetIn(load("testdata/example.txt"))
+		os.Chdir("testdata")
+		cmd.SetIn(load("example.txt"))
 
 		err := cmd.Run()
 		if err != nil {
 			t.Fatal(fail(req, err))
 		}
-		golden.AssertWith(t, stdout.String(), "testdata/out.html")
+		golden.AssertWith(t, stdout.String(), "out.html")
 	})
 }
 

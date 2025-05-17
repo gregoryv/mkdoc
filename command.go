@@ -34,16 +34,11 @@ func (c *Command) Run(args ...string) error {
 	}
 	_ = cols
 
-	// first pass include files
-	var (
-		first bytes.Buffer
-		last  bytes.Buffer
-	)
+	// first pass; include files
+	var first bytes.Buffer
+	incfile(&first, c.in, "<>")
 
-	io.Copy(&first, c.in)
-
-	io.Copy(&last, &first)
-
+	last := first
 	io.Copy(c.out, &last)
 	return nil
 }
