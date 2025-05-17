@@ -16,7 +16,7 @@ func dropcomments(w io.Writer, r io.Reader) {
 		if inside {
 			j := strings.Index(line, "-->")
 			if j >= 0 {
-				fmt.Fprint(w, line[j+3:])
+				fmt.Fprintln(w, line[j+3:])
 				inside = false
 				continue
 			}
@@ -28,7 +28,7 @@ func dropcomments(w io.Writer, r io.Reader) {
 			fmt.Fprint(w, line[:i])
 			j := strings.Index(line, "-->")
 			if j >= 0 {
-				fmt.Fprint(w, line[j+3:])
+				fmt.Fprintln(w, line[j+3:])
 				continue
 			}
 			inside = true

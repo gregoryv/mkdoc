@@ -1,9 +1,10 @@
-<!-- a basic html header is automatically inserted at the top -->
+<!-- a basic html header is automatically inserted at the top
+-->
 <incfile logo.txt>
 
 Abstract
 
-Keep it simple is the mantra.
+Keep it simple is the mantra.<!-- also dropped -->
 
 
 Table of Contents
