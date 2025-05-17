@@ -3,7 +3,6 @@ package txtfmt
 import (
 	"bufio"
 	"bytes"
-	"flag"
 	"fmt"
 	"io"
 	"log"
@@ -18,34 +17,6 @@ var (
 	tag         = "incfile"
 	prefix      = []byte(tag + " ")
 )
-
-func main() {
-	flag.Usage = func() {
-		w := flag.CommandLine.Output()
-		fmt.Fprintf(w, "Usage: %s [OPTIONS]\n", os.Args[0])
-		fmt.Fprintln(w, `
-Replaces <incfile FILE> on stdin with a named file and
-writes to stdout.
-
-Example:
-
-  echo -n "hi" > /tmp/file.txt
-  echo "<html><incfile /tmp/file.txt></html>" | incfile
-  <html>hi</html>
-
-
-OPTIONS`)
-		flag.PrintDefaults()
-	}
-
-	flag.StringVar(&delim, "delim", delim, "open and close characters")
-	flag.StringVar(&indent, "indent", indent, "prefix used on each line")
-	flag.Parse()
-
-	log.SetFlags(0)
-
-	incfile(os.Stdout, os.Stdin, delim)
-}
 
 func incfile(w io.Writer, txt io.Reader, delim string) {
 	if len(delim) == 2 {

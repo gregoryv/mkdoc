@@ -38,11 +38,16 @@ func (c *Command) Run(args ...string) error {
 	var first bytes.Buffer
 	incfile(&first, c.in, "<>")
 
+	// second pass; parse toc and index sections
 	var toc bytes.Buffer
 	var second bytes.Buffer
 	parsetoc(&second, &toc, &first, *cols)
 
-	last := second
+	// insert toc
+	var third bytes.Buffer
+	inserttoc(&third, &second, &toc)
+
+	last := third
 	io.Copy(c.out, &last)
 	return nil
 }
