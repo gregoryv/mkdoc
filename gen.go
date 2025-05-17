@@ -1,6 +1,6 @@
 // GENERATED, DO NOT EDIT!
 
-package txtfmt
+package main
 
 import "io"
 

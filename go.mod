@@ -1,4 +1,4 @@
-module github.com/gregoryv/txtfmt
+module github.com/gregoryv/main
 
 go 1.23.4
 

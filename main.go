@@ -1,16 +1,14 @@
-// Command txtfmt formats plain text files.
+// Command main formats plain text files.
 package main
 
 import (
 	"io"
 	"log"
 	"os"
-
-	"github.com/gregoryv/txtfmt"
 )
 
 func main() {
-	cmd := txtfmt.NewCommand()
+	cmd := NewCommand()
 	cmd.SetIn(stdin)
 	cmd.SetOut(stdout)
 	cmd.SetErr(stderr)

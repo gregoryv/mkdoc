@@ -1,4 +1,4 @@
-package txtfmt
+package main
 
 import (
 	"bytes"
@@ -25,7 +25,7 @@ type Command struct {
 }
 
 func (c *Command) Run(args ...string) error {
-	fs := flag.NewFlagSet("txtfmt", flag.ContinueOnError)
+	fs := flag.NewFlagSet("main", flag.ContinueOnError)
 	cols := fs.Int("cols", 69, "text width")
 
 	fs.SetOutput(c.err)

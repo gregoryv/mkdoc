@@ -1,4 +1,4 @@
-package txtfmt
+package main
 
 import (
 	"bufio"

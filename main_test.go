@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func Test(t *testing.T) {
+func Test_main(t *testing.T) {
 	t.Run("", func(t *testing.T) {
 		req := "No arguments SHOULD do nothing"
 		os.Args = []string{""} // first arg is command name

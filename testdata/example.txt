@@ -8,7 +8,7 @@ Keep it simple is the mantra.
 
 Table of Contents
 
-<!-- automatically included here by txtfmt -->
+<!-- automatically included here by main -->
 
 §1 Introduction
 
