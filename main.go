@@ -48,6 +48,8 @@ func mkdoc(err, out io.Writer, in io.Reader) {
 	// first pass; include files
 	next(func() { incfile(w, r, "<>") })
 
+	next(func() { replacerefs(w, r) })
+
 	// parse links early
 	var links map[string]string
 	next(func() { links = parselinks(w, r) })
