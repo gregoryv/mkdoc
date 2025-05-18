@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Three Column Layout</title>
+  <title>mkdoc</title>
   <style>
     body {
       margin: 0;
@@ -22,10 +22,16 @@
       border: 1px solid #ddd;
     }
 
-    .center {
-      flex: 2;
-      background-color: #f9f9f9;
-    }
+    .left, .right {
+    flex: 1; /* These grow to fill the available space */
+    min-width: 0; /* Prevents overflow */
+  }
+
+  .center {
+    width: 100px;  /* Fixed width center column */
+    flex-shrink: 0; /* Prevent shrinking */
+    background-color: #f9f9f9;
+  }
   </style>
 </head>
 <body>
