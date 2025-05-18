@@ -69,6 +69,8 @@ func mkdoc(err, out io.Writer, in io.Reader) {
 	// replace links, also includes reference links
 	next(func() { replacelinks(w, r, links) })
 
+	next(func() { replaceSections(w, r) })
+
 	fmt.Fprintln(out, htmlHeader)
 	io.Copy(out, r)
 }

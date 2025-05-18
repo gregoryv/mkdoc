@@ -33,30 +33,28 @@ content.
 §2.1 Links
 
 Sections SHOULD start with the § sign followed by a level and a
-heading.
+heading (#R1).
 
     §9.1.5 Example Heading
 
-Section links SHOULD be written within parentheses.
+Section links SHOULD be written within parentheses (#R2).
 
     "... link format rules (&sect;2.1)."
 
 When processing the § sign SHOULD be replaced with the word
-'section'.
+'section' (#R3).
 
     "... links (§2.1) ..."
 
 Plain links SHOULD be written within square brackets and URL's
-defined at the end of a document. Each line in the links file SHOULD
-read
-
-    "[Text]: URL"
+defined at the end of a document (#R4). Each line in the links file
+SHOULD read "[Text]: URL" (#R5).
 
 Example:
 
     ... [example.com] ...
 
-Reference links SHOULD be written within square brackets.
+Reference links SHOULD be written within square brackets (#R5).
 
     "... see [1]."
 
