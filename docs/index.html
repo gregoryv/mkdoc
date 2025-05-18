@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Three Column Layout</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    .column {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      border: 1px solid #ddd;
+    }
+
+    .center {
+      flex: 2;
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+
+<div class="container">
+  <div class="column left"><pre id="left-column">
+  </pre></div>
+  <div class="column center">
+    mkdoc
+  </div>
+  <div class="column right" id="right-column"></div>
+</div>
+
+<script>
+  fetch('example.txt')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('left-column').textContent = data;
+    });
+
+  fetch('out.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('right-column').innerHTML = data;
+    });
+</script>
+
+</body>
+</html>

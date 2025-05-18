@@ -32,3 +32,6 @@ jobs:
 
     - name: Benchmark
       run: go test -v -benchmem -bench . | gocolor
+
+    - name: Pages
+      run: cp ./testdata/example.txt ./testdata/out.html docs/
