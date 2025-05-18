@@ -4,9 +4,11 @@
 <meta charset="UTF-8">
 <title>mkdoc</title>
 <style>
-td { vertical-align: top; padding: 30px; padding-bottom: 25cm; }
+body { background-color: #d2d2d2; }
+.column { vertical-align: top; padding: 30px; padding-bottom: 25cm; }
+.column.left { background-color: #fff9e6; }
 .center { width: 100px; background-color: #e2e2e2; }
-
+.column.right { background-color: white; }
 </style>
 
 <table>
@@ -15,9 +17,9 @@ td { vertical-align: top; padding: 30px; padding-bottom: 25cm; }
 </thead>
 
 <tr>
-<td><pre id="left-column"></pre></td>
-<td class="center"></td>
-<td id="right-column"></td>
+<td class="column left"><pre id="left-column"></pre></td>
+<td class="column center"></td>
+<td class="column right"></td>
 </tr>
 </table>
 
@@ -34,7 +36,7 @@ td { vertical-align: top; padding: 30px; padding-bottom: 25cm; }
       const lines = data.split('\n');
       lines.shift();                          // Remove the first line      
       const remainingText = lines.join('\n');
-      document.getElementById('right-column').innerHTML = data;
+      document.getElementsByClassName('right')[0].innerHTML = data;
     });
 </script>
 
