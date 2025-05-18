@@ -50,6 +50,9 @@
   fetch('out.html')
     .then(response => response.text())
     .then(data => {
+      const lines = data.split('\n');
+      lines.shift();                          // Remove the first line      
+      const remainingText = lines.join('\n');
       document.getElementById('right-column').innerHTML = data;
     });
 </script>

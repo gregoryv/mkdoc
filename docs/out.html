@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<meta charset="utf-8">
+<pre>
+   
+            tttt                                       tttt             
+         ttt:::t                                    ttt:::t             
+         t:::::t                                    t:::::t             
+         t:::::t                                    t:::::t             
+   ttttttt:::::ttttttt    xxxxxxx      xxxxxxxttttttt:::::ttttttt       
+   t:::::::::::::::::t     x:::::x    x:::::x t:::::::::::::::::t       
+   t:::::::::::::::::t      x:::::x  x:::::x  t:::::::::::::::::t       
+   tttttt:::::::tttttt       x:::::xx:::::x   tttttt:::::::tttttt       
+         t:::::t              x::::::::::x          t:::::t             
+         t:::::t               x::::::::x           t:::::t             
+         t:::::t               x::::::::x           t:::::t             
+         t:::::t    tttttt    x::::::::::x          t:::::t    tttttt   
+         t::::::tttt:::::t   x:::::xx:::::x         t::::::tttt:::::t   
+         tt::::::::::::::t  x:::::x  x:::::x        tt::::::::::::::t   
+           tt:::::::::::tt x:::::x    x:::::x         tt:::::::::::tt   
+             ttttttttttt  xxxxxxx      xxxxxxx          ttttttttttt     
+       ffffffffffffffff                                   tttt          
+      f::::::::::::::::f                               ttt:::t          
+     f::::::::::::::::::f                              t:::::t          
+     f::::::fffffff:::::f                              t:::::t          
+     f:::::f       ffffff   mmmmmmm    mmmmmmm   ttttttt:::::ttttttt    
+     f:::::f              mm:::::::m  m:::::::mm t:::::::::::::::::t    
+    f:::::::ffffff       m::::::::::mm::::::::::mt:::::::::::::::::t    
+    f::::::::::::f       m::::::::::::::::::::::mtttttt:::::::tttttt    
+    f::::::::::::f       m:::::mmm::::::mmm:::::m      t:::::t          
+    f:::::::ffffff       m::::m   m::::m   m::::m      t:::::t          
+     f:::::f             m::::m   m::::m   m::::m      t:::::t          
+     f:::::f             m::::m   m::::m   m::::m      t:::::t    tttttt
+    f:::::::f            m::::m   m::::m   m::::m      t::::::tttt:::::t
+    f:::::::f            m::::m   m::::m   m::::m      tt::::::::::::::t
+    f:::::::f            m::::m   m::::m   m::::m        tt:::::::::::tt
+    fffffffff            mmmmmm   mmmmmm   mmmmmm          ttttttttttt
+    
+   
+Abstract
+   
+   Keep it simple is the mantra.
+   
+   
+Table of Contents
+
+<a href="#section-1">1</a>   Introduction  ...................................................
+<a href="#section-1.1">1.1</a>   Purpose  ......................................................
+<a href="#section-2">2</a>   Format Rules  ...................................................
+<a href="#section-2.1">2.1</a>   Links  ........................................................
+<a href="#section-3">3</a>   References  .....................................................
+   
+   
+   
+<a name="section-1" href="#section-1">1</a> Introduction
+   
+   Documenting concepts and ideas using plain text documents.  In
+   particular in software design, specifications need to be concise and
+   correct.
+   
+<a name="section-1.1" href="#section-1.1">1.1</a> Purpose
+   
+   Specify minimal format rules to plain text documents which enables
+   developers to use simple processing tools when producing the final
+   document. The final document in this context is a preformatted HTML
+   file.
+   
+<a name="section-2" href="#section-2">2</a> Format Rules
+   
+   The rules are meant to aid writers in maintaining focus on their
+   content.
+   
+<a name="section-2.1" href="#section-2.1">2.1</a> Links
+   
+   Sections SHOULD start with the § sign followed by a level and a
+   heading.
+   
+       §9.1.5 Example Heading
+   
+   Section links SHOULD be written within parentheses.
+   
+       "... link format rules (&sect;2.1)."
+   
+   When processing the § sign SHOULD be replaced with the word
+   'section'.
+   
+       "... links (§2.1) ..."
+   
+   Plain links SHOULD be written within square brackets and URL's
+   defined at the end of a document. Each line in the links file SHOULD
+   read
+   
+       "[Text]: URL"
+   
+   Example:
+   
+       ... <a href="https://example.com">example.com</a> ...
+   
+   Reference links SHOULD be written within square brackets.
+   
+       "... see [<a href="#ref-1">1</a>]."
+   
+   
+<a name="section-3" href="#section-3">3</a> References
+   
+   [<a href="#ref-1">1</a>] This part is describe in ...
+   
+   
+   
