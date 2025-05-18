@@ -1,50 +1,25 @@
 <!DOCTYPE html>
+
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>mkdoc</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: sans-serif;
-    }
+<meta charset="UTF-8">
+<title>mkdoc</title>
+<style>
+td { vertical-align: top; padding: 30px; padding-bottom: 25cm; }
+.center { width: 100px; background-color: #e2e2e2; }
 
-    .container {
-      display: flex;
-      height: 100vh;
-      width: 100vw;
-    }
+</style>
 
-    .column {
-      flex: 1;
-      padding: 20px;
-      overflow-y: auto;
-      border: 1px solid #ddd;
-    }
+<table>
+<thead>
+<tr><th>Before</th><th><code>mkdoc</code></th><th>After</th></tr>
+</thead>
 
-    .left, .right {
-    flex: 1; /* These grow to fill the available space */
-    min-width: 0; /* Prevents overflow */
-  }
-
-  .center {
-    width: 100px;  /* Fixed width center column */
-    flex-shrink: 0; /* Prevent shrinking */
-    background-color: #f9f9f9;
-  }
-  </style>
-</head>
-<body>
-
-
-<div class="container">
-  <div class="column left"><pre id="left-column">
-  </pre></div>
-  <div class="column center">
-    mkdoc
-  </div>
-  <div class="column right" id="right-column"></div>
-</div>
+<tr>
+<td><pre id="left-column"></pre></td>
+<td class="center"></td>
+<td id="right-column"></td>
+</tr>
+</table>
 
 <script>
   fetch('example.txt')
@@ -63,5 +38,3 @@
     });
 </script>
 
-</body>
-</html>
