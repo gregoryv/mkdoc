@@ -19,7 +19,7 @@ to generate an almost WYSIWYG HTML output for easy publishing.
 
 For example input refer to
 
-  https://github.com/gregoryv/mkdoc/testdata/example.txt
+  https://github.com/gregoryv/mkdoc/docs/example.txt
 
 Happy coding,
   Gregory Vincic

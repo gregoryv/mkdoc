@@ -46,7 +46,7 @@ func Test(t *testing.T) {
 		_ = "By default HTML SHOULD be written to stdout"
 		var e bytes.Buffer
 		var w bytes.Buffer
-		os.Chdir("testdata")
+		os.Chdir("docs")
 		r := load("example.txt")
 
 		mkdoc(&e, &w, r)
