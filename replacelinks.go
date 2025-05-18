@@ -10,6 +10,8 @@ import (
 	"strings"
 )
 
+// replacelinks converts [...] to a link using the given index of
+// links. If it's [\d+] it's converted to a #ref-(\d+) link.
 func replacelinks(w io.Writer, r io.Reader, links map[string]string) {
 	next := openTag
 	in := bufio.NewReader(r)
