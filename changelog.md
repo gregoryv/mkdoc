@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.1.1]
+
+- Fix references, ie. lines starting with [\d+]\s are named.
+
 ## [0.1.0] 2025-05-17
 
 Initial revision supporting 
