@@ -18,7 +18,7 @@ func replacerefs(w io.Writer, r io.Reader) {
 			i := strings.Index(line, "] ")
 			if i > 0 {
 				key := line[1:i]
-				rest := line[i+3:]
+				rest := line[i+2:]
 				fmt.Fprintf(w, `[<a name="ref-%s" href="#ref-%s">%s</a>] `, key, key, key)
 				fmt.Fprintln(w, rest)
 				continue

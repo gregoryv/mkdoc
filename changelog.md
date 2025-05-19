@@ -3,7 +3,9 @@
 ## [0.2.0]
 
 - Replace section links, e.g. (§1.1) with link to #section-1.1
-- Fix references, ie. lines starting with [\d+]\s are named.
+- Fix references; lines starting with [\d+]\s are named and
+  missing first character.
+  
 
 ## [0.1.0] 2025-05-17
 

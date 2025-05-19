@@ -66,6 +66,9 @@ func mkdoc(err, out io.Writer, in io.Reader) {
 	// insert toc
 	next(func() { inserttoc(w, r, &toc) })
 
+	// before replacing ordinary links
+	next(func() { replaceRequirements(w, r) })
+
 	// replace links, also includes reference links
 	next(func() { replacelinks(w, r, links) })
 

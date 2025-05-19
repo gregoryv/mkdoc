@@ -25,6 +25,12 @@ developers to use simple processing tools when producing the final
 document. The final document in this context is a preformatted HTML
 file.
 
+§1.2 Requirements
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+   document are to be interpreted as described in [RFC 2119] [1].
+   
 §2 Format Rules
 
 The rules are meant to aid writers in maintaining focus on their
@@ -32,37 +38,44 @@ content.
 
 §2.1 Links
 
-Sections SHOULD start with the § sign followed by a level and a
-heading (#R1).
+Sections SHOULD(#R1) start with the § sign followed by a level and a
+heading.
 
     §9.1.5 Example Heading
 
-Section links SHOULD be written within parentheses (#R2).
+Section links SHOULD(#R2) be written within parentheses.
 
     "... link format rules (&sect;2.1)."
 
-When processing the § sign SHOULD be replaced with the word
-'section' (#R3).
+When processing the § sign SHOULD(#R3) be replaced with the word
+'section'.
 
     "... links (§2.1) ..."
 
-Plain links SHOULD be written within square brackets and URL's
-defined at the end of a document (#R4). Each line in the links file
-SHOULD read "[Text]: URL" (#R5).
+Plain links SHOULD(#R4) be written within square brackets. URL's of
+those links SHOULD(#R5) be defined on separate lines. Preferably at the
+end of a document. 
 
-Example:
+Example:  "&lbrack;example.com&rbrack;: https://example.com".
 
     ... [example.com] ...
 
-Reference links SHOULD be written within square brackets (#R5).
+Reference links SHOULD(#R6) be written within square brackets.
 
     "... see [1]."
 
+Requirement links SHOULD(#R7) be written within parenthesis and start with
+#R followed by a number.
+
+Example: &lpar;#R7&rpar;    
 
 §3 References
 
-[1] This part is describe in ...
+[1] Bradner, S., "Key words for use in RFCs to Indicate Requirement
+    Levels", BCP 14, RFC 2119, March 1997.
 
 
 <!-- links are excluded from final output -->
 [example.com]: https://example.com
+[RFC 2119]: https://www.ietf.org/rfc/rfc2119
+
