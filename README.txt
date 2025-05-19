@@ -1,5 +1,7 @@
 mkdoc - text to html for plain text documents
 
+go install github.com/gregoryv/mkdoc@latest
+
 # Features
 
 - Include files with; <incfile FILENAME>
