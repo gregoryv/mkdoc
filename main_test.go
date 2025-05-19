@@ -89,12 +89,14 @@ This SHOULD
 fail.
 And this SHOULD
 NOT succeed.
+Duplicate SHOULD(#R1) also fail.
 `)
 		e := &bytes.Buffer{}
 		mkdoc(e, w, r)
 
 		got := e.String()
-		if err := contains(got, "line: 4", "line: 6", "line: 8"); err != nil {
+		err := contains(got, "line: 4", "line: 6", "line: 8", "line: 9")
+		if err != nil {
 			t.Error(err)
 		}
 	})

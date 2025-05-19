@@ -23,6 +23,8 @@ func checkreq(e, w io.Writer, r io.Reader) {
 		"SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", "OPTIONAL",
 	}
 
+	index := make(map[string]int)
+
 	warn := func(v string) {
 		v = strings.TrimSpace(v)
 		if strings.HasPrefix(v, `"`) {
@@ -32,6 +34,15 @@ func checkreq(e, w io.Writer, r io.Reader) {
 		if !strings.HasPrefix(v, "(#R") {
 			fmt.Fprintln(e, prev, line, "line:", lineno, "WARNING! untagged requirement")
 			ok = false
+		}
+		i := strings.Index(v, ")")
+		if i > 1 {
+			key := v[1:i]
+			if prevline, found := index[key]; found {
+				fmt.Fprintln(e, prev, line, "line:", lineno, "WARNING! duplicate", key, "defined at line:", prevline)
+				return
+			}
+			index[key] = lineno
 		}
 	}
 
