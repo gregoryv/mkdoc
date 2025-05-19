@@ -1,8 +1,11 @@
 mkdoc - text to html for plain text documents
 
-go install github.com/gregoryv/mkdoc@latest
+    $ go install github.com/gregoryv/mkdoc@latest
 
-# Features
+See example at https://gregoryv.github.io/mkdoc/
+
+
+Features
 
 - Include files with; <incfile FILENAME>
 - RFC like indentation
@@ -12,3 +15,4 @@ go install github.com/gregoryv/mkdoc@latest
 - Section indicator '§' followed by numbered levels
 - HTML comment exclusion
 - Requirement links, e.g. (#R9)
+
