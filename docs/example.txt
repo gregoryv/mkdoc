@@ -5,7 +5,7 @@ a basic html header is automatically inserted at the top
 
 Abstract
 
-Keep it simple is the mantra.<!-- also dropped -->
+Keep it simple is the mantra.<!-- inline comment also dropped -->
 
 
 Table of Contents
