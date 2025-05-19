@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.2.0]
+## [0.2.0] 2025-05-19
 
 - Remove R prefix from requirement links
 - Add parsing of requirement links
