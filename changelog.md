@@ -2,6 +2,7 @@
 
 ## [0.2.0]
 
+- Add parsing of requirement links.
 - Replace section links, e.g. (§1.1) with link to #section-1.1
 - Fix references; lines starting with [\d+]\s are named and
   missing first character.
