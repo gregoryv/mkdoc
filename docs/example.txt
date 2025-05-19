@@ -21,9 +21,9 @@ correct.
 §1.1 Purpose
 
 Specify minimal format rules to plain text documents which enables
-developers to use simple processing tools when producing the final
-document. The final document in this context is a preformatted HTML
-file.
+developers to use processing tools, like [mkdoc], when producing the
+final document. The final document in this context is a preformatted
+HTML file.
 
 §1.2 Requirements
 
@@ -80,4 +80,4 @@ Example: &lpar;#R7&rpar;
 <!-- links are excluded from final output -->
 [example.com]: https://example.com
 [RFC 2119]: https://www.ietf.org/rfc/rfc2119
-
+[mkdoc]: https://github.com/gregoryv/mkdoc
