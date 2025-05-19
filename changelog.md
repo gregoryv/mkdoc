@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.2.1] 2025-05-19
+
+- Fix links in beginning of line, where replaced with #ref-...
+
 ## [0.2.0] 2025-05-19
 
 - Remove R prefix from requirement links

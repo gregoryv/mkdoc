@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"strconv"
 	"strings"
 )
 
@@ -19,9 +20,11 @@ func replacerefs(w io.Writer, r io.Reader) {
 			if i > 0 {
 				key := line[1:i]
 				rest := line[i+2:]
-				fmt.Fprintf(w, `[<a name="ref-%s" href="#ref-%s">%s</a>] `, key, key, key)
-				fmt.Fprintln(w, rest)
-				continue
+				if _, err := strconv.Atoi(key); err == nil {
+					fmt.Fprintf(w, `[<a name="ref-%s" href="#ref-%s">%s</a>] `, key, key, key)
+					fmt.Fprintln(w, rest)
+					continue
+				}
 			}
 		}
 		fmt.Fprintln(w, line)
