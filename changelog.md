@@ -2,6 +2,7 @@
 
 ## [0.3.0]
 
+- Warn if requirements are not tagged with (#R...)
 - Rename <incfile ...> to <cat ...>; shorter and more memorable
 
 ## [0.2.1] 2025-05-19

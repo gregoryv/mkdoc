@@ -78,6 +78,26 @@ func Test(t *testing.T) {
 		r := strings.NewReader(`... [<a href="#x">text</a>] .. `)
 		mkdoc(e, w, r)
 	})
+
+	t.Run("", func(t *testing.T) {
+		_ = "untagged requirements SHOULD warn"
+		r := strings.NewReader(`
+First SHOULD(#R1) be ok.
+
+Second SHOULD fail.
+This SHOULD
+fail.
+And this SHOULD
+NOT succeed.
+`)
+		e := &bytes.Buffer{}
+		mkdoc(e, w, r)
+
+		got := e.String()
+		if err := contains(got, "line: 4", "line: 6", "line: 8"); err != nil {
+			t.Error(err)
+		}
+	})
 }
 
 // ----------------------------------------

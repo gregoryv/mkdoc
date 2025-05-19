@@ -42,11 +42,14 @@ func mkdoc(err, out io.Writer, in io.Reader) {
 	io.Copy(r, in)
 	next := func(step func()) {
 		step()
-		io.Copy(r, w)
+		r, w = w, r
 	}
 
 	// first pass; include files
 	next(func() { incfile(w, r, "<>") })
+
+	// check that all requirements are indexed with (#R...)
+	next(func() { checkreq(err, w, r) })
 
 	next(func() { replacerefs(w, r) })
 
