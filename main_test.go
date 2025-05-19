@@ -63,7 +63,7 @@ func Test(t *testing.T) {
 	t.Run("", func(t *testing.T) {
 		req := "warn on missing file"
 		var e bytes.Buffer
-		r := strings.NewReader("<incfile nosuch.txt>")
+		r := strings.NewReader("<cat nosuch.txt>")
 
 		mkdoc(&e, w, r)
 

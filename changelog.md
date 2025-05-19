@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.3.0]
+
+- Rename <incfile ...> to <cat ...>; shorter and more memorable
+
 ## [0.2.1] 2025-05-19
 
 - Fix links in beginning of line, where replaced with #ref-...

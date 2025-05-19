@@ -11,7 +11,7 @@ import (
 
 func incfile(w io.Writer, r io.Reader, delim string) {
 	s := bufio.NewScanner(r)
-	prefix := "<incfile "
+	prefix := "<cat "
 	for s.Scan() {
 		line := s.Text()
 

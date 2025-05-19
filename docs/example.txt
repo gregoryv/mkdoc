@@ -1,7 +1,7 @@
 <!--
 a basic html header is automatically inserted at the top
 -->
-<incfile logo.txt>
+<cat logo.txt>
 
 Abstract
 
