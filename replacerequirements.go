@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"log"
+	"strings"
 )
 
 // replaceRequirements converts (§...) to a link to  #requirement-(\d+) link.
@@ -59,7 +60,8 @@ func closeRequirement(w io.Writer, r *bufio.Reader) (parseRequirementFn, error) 
 		return nil, fmt.Errorf("missing right square parenthesis")
 	}
 	key := string(text[:len(text)-1])
-	fmt.Fprintf(w, `<sup><a name="%s" href="#%s">%s</a></sup>`, key, key, key)
+	no := strings.TrimPrefix(key, "R")
+	fmt.Fprintf(w, `<sub><a name="%s" href="#%s">%s</a></sub>`, key, key, no)
 
 	return openRequirement, nil
 }

@@ -36,12 +36,14 @@ file.
 The rules are meant to aid writers in maintaining focus on their
 content.
 
-§2.1 Links
+§2.1 Sections
 
 Sections SHOULD(#R1) start with the § sign followed by a level and a
 heading.
 
     §9.1.5 Example Heading
+
+§2.2 Links
 
 Section links SHOULD(#R2) be written within parentheses.
 
