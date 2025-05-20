@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.3.0]
+## [0.3.0] 2025-05-20
 
 - Warn if requirements are not tagged with (#R...)
 - Rename <incfile ...> to <cat ...>; shorter and more memorable
