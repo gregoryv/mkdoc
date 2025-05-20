@@ -74,9 +74,14 @@ func Test(t *testing.T) {
 	})
 
 	t.Run("", func(t *testing.T) {
-		_ = "already anchored links SHOULD be ignored"
-		r := strings.NewReader(`... [<a href="#x">text</a>] .. `)
+		req := "already anchored links SHOULD be ignored"
+		w := &bytes.Buffer{}
+		txt := `... [<a href="#x">text</a>] .. `
+		r := strings.NewReader(txt)
 		mkdoc(e, w, r)
+		if err := contains(w.String(), txt); err != nil {
+			t.Error(fail(req, err))
+		}
 	})
 
 	t.Run("", func(t *testing.T) {
