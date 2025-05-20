@@ -102,6 +102,16 @@ Duplicate SHOULD(#R1) also fail.
 	})
 }
 
+func Benchmark(b *testing.B) {
+	d := ioutil.Discard
+	os.Chdir("docs")
+	r := load("example.txt")
+
+	for b.Loop() {
+		mkdoc(d, d, r)
+	}
+}
+
 // ----------------------------------------
 
 func load(filename string) io.Reader {
