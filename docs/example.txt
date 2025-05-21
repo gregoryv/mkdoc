@@ -10,7 +10,24 @@ Keep it simple is the mantra.<!-- inline comment also dropped -->
 
 Table of Contents
 
-<!-- automatically included here by mkdoc -->
+<!-- automatically included here by mkdoc
+
+
+
+  This is here to align input and output of our example
+
+
+
+
+
+
+
+
+
+-->
+
+
+
 
 §1 Introduction
 
@@ -31,6 +48,9 @@ HTML file.
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
    document are to be interpreted as described in [RFC 2119] [1].
    
+
+
+
 §2 Format Rules
 
 The rules are meant to aid writers in maintaining focus on their
@@ -50,17 +70,18 @@ Section links SHOULD(#R2) be written within parentheses.
     "... link format rules (&sect;2.1)."
 
 When processing the § sign SHOULD(#R3) be replaced with the word
-'section'.
+'section'. 
 
     "... links (§2.1) ..."
 
-Plain links SHOULD(#R4) be written within square brackets. URL's of
-those links SHOULD(#R5) be defined on separate lines. Preferably at the
-end of a document. 
+Plain links SHOULD(#R4) be written within square brackets.
 
-Example:  "&lbrack;example.com&rbrack;: https://example.com".
+    "&lbrack;RFC 2119&rbrack;"
+    
+URL's of those links SHOULD(#R5) be defined on separate
+lines. Preferably at the end of a document.
 
-    ... [example.com] ...
+    "&lbrack;RFC 2119&rbrack;: https://example.com".
 
 Reference links SHOULD(#R6) be written within square brackets.
 
@@ -69,7 +90,13 @@ Reference links SHOULD(#R6) be written within square brackets.
 Requirement links SHOULD(#R7) be written within parenthesis and start with
 #R followed by a number.
 
-Example: &lpar;#R7&rpar;    
+    &lpar;#R7&rpar;    
+
+Reuirement links MUST be plased right after one of the keywords as
+defined by [RFC 2119].
+
+
+
 
 §3 References
 

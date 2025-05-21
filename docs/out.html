@@ -30,6 +30,9 @@ Table of Contents
    
    
    
+   
+   
+   
 <a name="section-1" href="#section-1">1</a> Introduction
    
    Documenting concepts and ideas using plain text documents.  In
@@ -49,6 +52,9 @@ Table of Contents
       "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
       document are to be interpreted as described in <a href="https://www.ietf.org/rfc/rfc2119">RFC 2119</a> [<a href="#ref-1">1</a>].
       
+   
+   
+   
 <a name="section-2" href="#section-2">2</a> Format Rules
    
    The rules are meant to aid writers in maintaining focus on their
@@ -68,17 +74,18 @@ Table of Contents
        "... link format rules (&sect;2.1)."
    
    When processing the § sign SHOULD<sub><a name="R3" href="#R3">3</a></sub> be replaced with the word
-   'section'.
+   'section'. 
    
        "... links (<a href="#section-2.1">section 2.1</a>) ..."
    
-   Plain links SHOULD<sub><a name="R4" href="#R4">4</a></sub> be written within square brackets. URL's of
-   those links SHOULD<sub><a name="R5" href="#R5">5</a></sub> be defined on separate lines. Preferably at the
-   end of a document. 
+   Plain links SHOULD<sub><a name="R4" href="#R4">4</a></sub> be written within square brackets.
    
-   Example:  "&lbrack;example.com&rbrack;: https://example.com".
+       "&lbrack;RFC 2119&rbrack;"
+       
+   URL's of those links SHOULD<sub><a name="R5" href="#R5">5</a></sub> be defined on separate
+   lines. Preferably at the end of a document.
    
-       ... <a href="https://example.com">example.com</a> ...
+       "&lbrack;RFC 2119&rbrack;: https://example.com".
    
    Reference links SHOULD<sub><a name="R6" href="#R6">6</a></sub> be written within square brackets.
    
@@ -87,7 +94,13 @@ Table of Contents
    Requirement links SHOULD<sub><a name="R7" href="#R7">7</a></sub> be written within parenthesis and start with
    #R followed by a number.
    
-   Example: &lpar;#R7&rpar;    
+       &lpar;#R7&rpar;    
+   
+   Reuirement links MUST be plased right after one of the keywords as
+   defined by <a href="https://www.ietf.org/rfc/rfc2119">RFC 2119</a>.
+   
+   
+   
    
 <a name="section-3" href="#section-3">3</a> References
    
