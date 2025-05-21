@@ -12,19 +12,11 @@ func parsetoc(w, toc io.Writer, r io.Reader, width int) {
 	s := bufio.NewScanner(r)
 	for s.Scan() {
 		line := s.Text()
-		if !strings.HasPrefix(line, "§") {
+		s, h, ok := parseSection(line)
+		if !ok {
 			fmt.Fprintln(w, line)
 			continue
 		}
-		// find section identifier
-		i := strings.Index(line, " ")
-		if i == -1 {
-			log.Print("WARNING! section has no identifier")
-			continue
-		}
-		s := strings.TrimLeft(line[:i], "§")
-
-		h := strings.TrimSpace(line[i:])
 		// print section link to stderr
 		// three spaces separation as found in example RFC's
 		fmt.Fprintf(toc,
@@ -44,25 +36,32 @@ func linksections(w io.Writer, r io.Reader) {
 	s := bufio.NewScanner(r)
 	for s.Scan() {
 		line := s.Text()
-		if !strings.HasPrefix(line, "§") {
+		s, h, ok := parseSection(line)
+		if !ok {
 			fmt.Fprintln(w, line)
 			continue
 		}
-		// find section identifier
-		i := strings.Index(line, " ")
-		if i == -1 {
-			log.Print("WARNING! section has no identifier")
-			continue
-		}
-		s := strings.TrimLeft(line[:i], "§")
-
-		h := strings.TrimSpace(line[i:])
-
 		// print toc link to toc
 		format := `<a name="section-%s" href="#section-%s">%s</a> %s`
 		fmt.Fprintf(w, format, s, s, s, h)
 		fmt.Fprintln(w)
 	}
+}
+
+func parseSection(line string) (s, h string, ok bool) {
+	if !strings.HasPrefix(line, "§") {
+		return
+	}
+	// find section identifier
+	i := strings.Index(line, " ")
+	if i == -1 {
+		log.Print("WARNING! section has no identifier")
+		return
+	}
+	s = strings.TrimLeft(line[:i], "§")
+	h = strings.TrimSpace(line[i:])
+	ok = true
+	return
 }
 
 func inserttoc(w io.Writer, r, toc io.Reader) {
