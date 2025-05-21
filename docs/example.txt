@@ -74,7 +74,7 @@ Example: &lpar;#R7&rpar;
 §3 References
 
 [1] Bradner, S., "Key words for use in RFCs to Indicate Requirement
-    Levels", BCP 14, RFC 2119, March 1997.
+    Levels", BCP 14, [RFC 2119], March 1997.
 
 
 <!-- links are excluded from final output -->
