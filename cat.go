@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func incfile(w io.Writer, r io.Reader, delim string) {
+func cat(w io.Writer, r io.Reader, delim string) {
 	s := bufio.NewScanner(r)
 	prefix := "<cat "
 	for s.Scan() {
@@ -17,8 +17,7 @@ func incfile(w io.Writer, r io.Reader, delim string) {
 
 		if strings.HasPrefix(line, prefix) {
 			f := line[len(prefix):]
-			f = strings.TrimRight(f, ">")
-			f = strings.TrimSpace(f)
+			f = strings.Trim(f, " >")
 			fh, err := os.Open(f)
 			if err != nil {
 				log.Print(err)

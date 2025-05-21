@@ -46,7 +46,7 @@ func mkdoc(err, out io.Writer, in io.Reader) {
 	}
 
 	// first pass; include files
-	next(func() { incfile(w, r, "<>") })
+	next(func() { cat(w, r, "<>") })
 
 	// check that all requirements are indexed with (#R...)
 	next(func() { checkreq(err, w, r) })
