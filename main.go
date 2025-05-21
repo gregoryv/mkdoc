@@ -65,6 +65,7 @@ func mkdoc(err, out io.Writer, in io.Reader) {
 	var toc bytes.Buffer
 	cols := 69
 	next(func() { parsetoc(w, &toc, r, cols) })
+	next(func() { linksections(w, r) })
 
 	// insert toc
 	next(func() { inserttoc(w, r, &toc) })

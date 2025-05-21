@@ -8,8 +8,6 @@ import (
 	"strings"
 )
 
-// parsetoc does two things; writes named sections to w and the table
-// of contents to toc.
 func parsetoc(w, toc io.Writer, r io.Reader, width int) {
 	s := bufio.NewScanner(r)
 	for s.Scan() {
@@ -37,10 +35,8 @@ func parsetoc(w, toc io.Writer, r io.Reader, width int) {
 		dots := strings.Repeat(".", n)
 		fmt.Fprintln(toc, " ", dots)
 
-		// print toc link to toc
-		format := `<a name="section-%s" href="#section-%s">%s</a> %s`
-		fmt.Fprintf(w, format, s, s, s, h)
-		fmt.Fprintln(w)
+		// just forward the line untouched, see linksections
+		fmt.Fprintln(w, line)
 	}
 }
 
