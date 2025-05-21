@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"log"
 	"strings"
 )
 
@@ -20,6 +21,7 @@ func parsetoc(w, toc io.Writer, r io.Reader, width int) {
 		// find section identifier
 		i := strings.Index(line, " ")
 		if i == -1 {
+			log.Print("WARNING! section has no identifier")
 			continue
 		}
 		s := strings.TrimLeft(line[:i], "§")

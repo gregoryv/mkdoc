@@ -74,6 +74,18 @@ func Test(t *testing.T) {
 	})
 
 	t.Run("", func(t *testing.T) {
+		req := "warn on missing section identifier"
+		var e bytes.Buffer
+		r := strings.NewReader("§ab")
+
+		mkdoc(&e, w, r)
+
+		got := e.String()
+		if got == "" {
+			t.Error(fail(req, "empty"))
+		}
+	})
+	t.Run("", func(t *testing.T) {
 		req := "already anchored links SHOULD be ignored"
 		w := &bytes.Buffer{}
 		txt := `... [<a href="#x">text</a>] .. `
