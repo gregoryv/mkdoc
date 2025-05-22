@@ -11,18 +11,10 @@ import (
 
 var usage = `Usage: mkdoc < input.txt
 
-A text processing tool to generate RFC like documents
+A text processing tool to generate RFC like software specifications
 from plain text files.
 
-The goals is using simple plain text rules, optimised for writing
-to generate an almost WYSIWYG HTML output for easy publishing.
-
-For example input refer to
-
-  https://github.com/gregoryv/mkdoc/docs/example.txt
-
-Happy coding,
-  Gregory Vincic
+Example:  https://gregoryv.github.io/mkdoc
 `
 
 func main() {
