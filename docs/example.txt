@@ -91,12 +91,12 @@ These links refer to a list of references, most likely found in a
 separate section. In this document see (§3).
 
 Requirement links SHOULD(#R7) be written within parenthesis and start with
-#R followed by a number.
+'#R' followed by a number.
 
     &lpar;#R7&rpar;    
 
-Reuirement links MUST(#R8) be plased right after one of the keywords as
-defined by [RFC 2119].
+Reuirement links MUST(#R8) be placed directly after one of the
+keywords as defined by [RFC 2119].
 
 
 
