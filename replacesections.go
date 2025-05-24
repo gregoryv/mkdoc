@@ -24,7 +24,7 @@ func replaceSections(w io.Writer, r io.Reader) {
 	}
 }
 
-func openSection(w io.Writer, r *bufio.Reader) (parseSectionFn, error) {
+func openSection(w io.Writer, r *bufio.Reader) (pipeFn, error) {
 	// look for open character
 	head, err := r.ReadBytes('(')
 	if err != nil {
@@ -35,7 +35,7 @@ func openSection(w io.Writer, r *bufio.Reader) (parseSectionFn, error) {
 	return sectionRune, nil
 }
 
-func sectionRune(w io.Writer, r *bufio.Reader) (parseSectionFn, error) {
+func sectionRune(w io.Writer, r *bufio.Reader) (pipeFn, error) {
 	v, _, err := r.ReadRune()
 	if err != nil {
 		return nil, err
@@ -48,7 +48,7 @@ func sectionRune(w io.Writer, r *bufio.Reader) (parseSectionFn, error) {
 	return openSection, nil
 }
 
-func closeSection(w io.Writer, r *bufio.Reader) (parseSectionFn, error) {
+func closeSection(w io.Writer, r *bufio.Reader) (pipeFn, error) {
 	// look for open character
 	text, err := r.ReadBytes(')')
 	if err != nil {
@@ -60,5 +60,3 @@ func closeSection(w io.Writer, r *bufio.Reader) (parseSectionFn, error) {
 
 	return openSection, nil
 }
-
-type parseSectionFn func(io.Writer, *bufio.Reader) (parseSectionFn, error)
