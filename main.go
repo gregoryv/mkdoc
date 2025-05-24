@@ -40,20 +40,19 @@ func mkdoc(err, out io.Writer, in io.Reader) {
 	// first pass; include files
 	next(func() { cat(w, r, "<>") })
 
-	// check that all requirements are indexed with (#R...)
-	next(func() { checkreq(err, w, r) })
-
-	next(func() { replacerefs(w, r) })
-
 	// parse links early
 	var links map[string]string
 	next(func() { links = parselinks(w, r) })
 
-	next(func() { dropcomments(w, r) })
-
+	// requirements must be indexed (#R...)
+	next(func() { checkreq(err, w, r) }) // #R8
 	next(func() { sentenceSpace(w, r) })
 	next(func() { emptyLines(w, r) })
 
+	// lines starting with `[\d+] ...`
+	next(func() { replacerefs(w, r) })
+
+	next(func() { dropcomments(w, r) })
 	next(func() { rfcindent(w, r) })
 
 	// second pass; parse toc and index sections
