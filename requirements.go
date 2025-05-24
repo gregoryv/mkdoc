@@ -25,7 +25,7 @@ func replaceRequirements(w io.Writer, r io.Reader) {
 	}
 }
 
-func openRequirement(w io.Writer, r *bufio.Reader) (parseRequirementFn, error) {
+func openRequirement(w io.Writer, r *bufio.Reader) (pipeFn, error) {
 	// look for open character
 	head, err := r.ReadBytes('(')
 	if err != nil {
@@ -39,7 +39,7 @@ func openRequirement(w io.Writer, r *bufio.Reader) (parseRequirementFn, error) {
 	return requirementRune, nil
 }
 
-func requirementRune(w io.Writer, r *bufio.Reader) (parseRequirementFn, error) {
+func requirementRune(w io.Writer, r *bufio.Reader) (pipeFn, error) {
 	v, _, err := r.ReadRune()
 	if err != nil {
 		return nil, err
@@ -52,7 +52,7 @@ func requirementRune(w io.Writer, r *bufio.Reader) (parseRequirementFn, error) {
 	return openRequirement, nil
 }
 
-func closeRequirement(w io.Writer, r *bufio.Reader) (parseRequirementFn, error) {
+func closeRequirement(w io.Writer, r *bufio.Reader) (pipeFn, error) {
 	// look for open character
 	text, err := r.ReadBytes(')')
 	if err != nil {
@@ -66,4 +66,4 @@ func closeRequirement(w io.Writer, r *bufio.Reader) (parseRequirementFn, error) 
 	return openRequirement, nil
 }
 
-type parseRequirementFn func(io.Writer, *bufio.Reader) (parseRequirementFn, error)
+type pipeFn func(io.Writer, *bufio.Reader) (pipeFn, error)
