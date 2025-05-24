@@ -52,6 +52,7 @@ func mkdoc(err, out io.Writer, in io.Reader) {
 	next(func() { dropcomments(w, r) })
 
 	next(func() { sentenceSpace(w, r) })
+	next(func() { emptyLines(w, r) })
 
 	next(func() { rfcindent(w, r) })
 

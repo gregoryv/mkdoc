@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.4.0]
+
+- Warn if empty lines only contain space characters
+- Warn if adjecent sentences are Not separated by two space characters
+
 ## [0.3.0] 2025-05-20
 
 - Warn if requirements are not tagged with (#R...)

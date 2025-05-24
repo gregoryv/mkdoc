@@ -3,6 +3,15 @@ a basic html header is automatically inserted at the top
 -->
 <cat logo.txt>
 
+
+<!--
+
+align comment
+
+
+
+-->
+
 Abstract
 
 Keep it simple is the mantra.<!-- inline comment also dropped -->
@@ -14,14 +23,7 @@ Table of Contents
 
 
 
-  This is here to align input and output of our example
-
-
-
-
-
-
-
+align comment
 
 
 -->
@@ -47,7 +49,7 @@ HTML file.
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
    document are to be interpreted as described in [RFC 2119] [1].
-   
+
 
 
 
@@ -77,11 +79,11 @@ Section links sections SHOULD(#R3) replace the § sign with the word
 Plain links SHOULD(#R4) be written within square brackets.
 
     "&lbrack;RFC 2119&rbrack;"
-    
-URL's of plain links SHOULD(#R5) be defined on separate
-lines.  Preferably at the end of a document or section.
 
-    "&lbrack;RFC 2119&rbrack;: https://example.com".
+URL's of plain links SHOULD(#R5) be defined on separate lines.
+Preferably at the end of a document or section.
+
+    "&lbrack;RFC 2119&rbrack;: https://example.com"
 
 Reference links SHOULD(#R6) be written within square brackets.
 
