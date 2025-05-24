@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-// replaceRequirements converts (§...) to a link to  #requirement-(\d+) link.
+// replaceRequirements converts (#R\d+) to a link to  #requirement-(\d+) link.
 func replaceRequirements(w io.Writer, r io.Reader) {
 	next := openRequirement
 	in := bufio.NewReader(r)
