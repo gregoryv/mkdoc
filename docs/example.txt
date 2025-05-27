@@ -1,28 +1,29 @@
 <!--
+
+
 a basic html header is automatically inserted at the top
+
+
+
 -->
 <cat logo.txt>
 
 
-<!--
 
-align comment
-
-
--->
 
 Abstract
 
-Keep it simple is the mantra.<!-- inline comment also dropped -->
+Keep it simple is the mantra.
 
 
 Table of Contents
 
-<!-- automatically included here by mkdoc
+<!--
 
 
+table of contents is automatically inserted here
 
-align comment
+
 
 
 
@@ -107,6 +108,13 @@ keywords as defined by [RFC 2119].
 [1] Bradner, S., "Key words for use in RFCs to Indicate Requirement
     Levels", BCP 14, [RFC 2119], March 1997.
 
+
+
+				* * *
+
+
+
+
 §A Appendix
 
 §A.1 Requirements
@@ -114,7 +122,14 @@ keywords as defined by [RFC 2119].
 <list of requirements>
 
 
+
+
+
+
+
+
 <!-- links are excluded from final output -->
+
 [example.com]: https://example.com
 [RFC 2119]: https://www.ietf.org/rfc/rfc2119
 [mkdoc]: https://github.com/gregoryv/mkdoc

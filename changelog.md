@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.4.0]
+## [0.4.0] 2025-05-27
 
 - <list of requirements> includes a parsed list of RFC 2119
   requirement sentences in the document
