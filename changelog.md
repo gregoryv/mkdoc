@@ -2,6 +2,8 @@
 
 ## [0.4.0]
 
+- <list of requirements> includes a parsed list of RFC 2119
+  requirement sentences in the document
 - Warn if empty lines only contain space characters
 - Warn if adjecent sentences are Not separated by two space characters
 

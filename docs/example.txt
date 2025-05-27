@@ -9,7 +9,6 @@ a basic html header is automatically inserted at the top
 align comment
 
 
-
 -->
 
 Abstract
@@ -24,6 +23,8 @@ Table of Contents
 
 
 align comment
+
+
 
 
 -->
@@ -46,9 +47,9 @@ HTML file.
 
 §1.2 Requirements
 
-   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
-   document are to be interpreted as described in [RFC 2119] [1].
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+"SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+document are to be interpreted as described in [RFC 2119] [1].
 
 
 
@@ -101,12 +102,16 @@ Reuirement links MUST(#R8) be placed directly after one of the
 keywords as defined by [RFC 2119].
 
 
-
-
 §3 References
 
 [1] Bradner, S., "Key words for use in RFCs to Indicate Requirement
     Levels", BCP 14, [RFC 2119], March 1997.
+
+§A Appendix
+
+§A.1 Requirements
+
+<list of requirements>
 
 
 <!-- links are excluded from final output -->

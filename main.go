@@ -44,15 +44,20 @@ func mkdoc(err, out io.Writer, in io.Reader) {
 	var links map[string]string
 	next(func() { links = parselinks(w, r) })
 
+	var requirements []string
+	next(func() { requirements = parsereq(w, r) })
+
 	// requirements must be indexed (#R...)
 	next(func() { checkreq(err, w, r) }) // #R8
 	next(func() { sentenceSpace(w, r) })
 	next(func() { emptyLines(w, r) })
+	next(func() { includeReq(w, r, requirements) })
 
 	// lines starting with `[\d+] ...`
 	next(func() { replacerefs(w, r) })
 
 	next(func() { dropcomments(w, r) })
+
 	next(func() { rfcindent(w, r) })
 
 	// second pass; parse toc and index sections
