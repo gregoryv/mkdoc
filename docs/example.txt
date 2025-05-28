@@ -13,7 +13,13 @@ a basic html header is automatically inserted at the top
 
 Abstract
 
-Keep it simple is the mantra.
+Documenting concepts and ideas using plain text documents.  In
+particular in software design, specifications need to be concise and
+correct.  Preformated RFC like documents are easy to read and many
+follow [RFC 2119] for phrasing requirements.  This specification
+introduces a few new rules to identify each requirement, making it
+easier to reference them while implementing.
+
 
 
 Table of Contents
@@ -37,7 +43,12 @@ table of contents is automatically inserted here
 
 Documenting concepts and ideas using plain text documents.  In
 particular in software design, specifications need to be concise and
-correct.
+correct.  Once a specification is ready for use an implementation
+benefits if it can easily reference the requirements in some manner.
+A test suite could use the wording of a requirement verbatim if it
+fails.  This specification defines a few rules for how to tag
+requirements and provides a tool for parsing them out of plain text
+documents.
 
 §1.1 Purpose
 
