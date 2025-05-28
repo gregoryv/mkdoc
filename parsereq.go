@@ -12,6 +12,8 @@ import (
 	"unicode/utf8"
 )
 
+var maxLineWidth = 69 // 72 - rfc indent of 3
+
 func includeReq(w io.Writer, r io.Reader, requirements []string) {
 	s := bufio.NewScanner(r)
 	for s.Scan() {
@@ -19,7 +21,27 @@ func includeReq(w io.Writer, r io.Reader, requirements []string) {
 		if strings.ToLower(line) == "<list of requirements>" {
 			fmt.Fprintln(w)
 			for _, req := range requirements {
-				fmt.Fprintln(w, req)
+				// find first space, ie. after "R101 ..."
+				i := strings.Index(req, " ")
+
+				// link the requirement id
+				id := req[:i]
+				fmt.Fprintf(w, `<a href="#%s">%s</a>`, id, id)
+
+				if len(req) < maxLineWidth {
+					fmt.Fprintln(w, req[i:])
+					fmt.Fprintln(w)
+					continue
+				}
+
+				// find last space
+				j := strings.LastIndex(req[:maxLineWidth], " ")
+				fmt.Fprintln(w, req[i:j])
+				// indentation
+				fmt.Fprint(w, strings.Repeat(" ", i))
+				// the rest
+				fmt.Fprintln(w, req[j:])
+				fmt.Fprintln(w)
 			}
 		} else {
 			fmt.Fprintln(w, line)
@@ -28,12 +50,26 @@ func includeReq(w io.Writer, r io.Reader, requirements []string) {
 }
 
 func parsereq(w io.Writer, r io.Reader) []string {
-	s := bufio.NewScanner(r)
+	// use a pipe to parse sentences and just copy the data
+	r1, w1 := io.Pipe()
+	wboth := io.MultiWriter(w, w1)
+	// start the copy
+	go func() {
+		io.Copy(wboth, r)
+		w1.Close()
+	}()
+
+	// parse sentences
+	var buf bytes.Buffer
+	sentences(&buf, r1)
+
+	// filter sentences that look like requirements
+	s := bufio.NewScanner(&buf)
 	res := make([]string, 0)
 	for s.Scan() {
 		line := s.Text()
-		fmt.Fprintln(w, line)
 		if strings.Contains(line, "(#R") {
+			// move the (#R...) to front of line
 			res = append(res, moveTagToFront(line))
 		}
 	}
@@ -43,7 +79,7 @@ func parsereq(w io.Writer, r io.Reader) []string {
 var re = regexp.MustCompile(`^(.*?\b)\(#(R\d+)\)(.*)$`)
 
 func moveTagToFront(input string) string {
-	return re.ReplaceAllString(input, "<a href=\"#$2\">$2</a> $1$3")
+	return re.ReplaceAllString(input, "$2 $1$3")
 }
 
 func sentences(w io.Writer, r io.Reader) {
