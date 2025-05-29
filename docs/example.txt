@@ -84,8 +84,7 @@ Section links MUST(#R2) be written within parentheses.
 
     "... link format rules (&sect;2.1)."
 
-Section links sections SHOULD(#R3) replace the § sign with the word
-'section'.
+Link sections SHOULD(#R3) replace the § sign with the word 'section'.
 
     "... link format rules (§2.1)."
 
