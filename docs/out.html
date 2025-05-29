@@ -34,6 +34,10 @@ Table of Contents
 <a href="#section-2">2</a>   Format Rules  ...................................................
 <a href="#section-2.1">2.1</a>   Sections  .....................................................
 <a href="#section-2.2">2.2</a>   Links  ........................................................
+<a href="#section-2.2.1">2.2.1</a>   Links to sections  ..........................................
+<a href="#section-2.2.2">2.2.2</a>   Links to other URLs  ........................................
+<a href="#section-2.2.3">2.2.3</a>   Reference links within a document  ..........................
+<a href="#section-2.2.4">2.2.4</a>   Requirement links  ..........................................
 <a href="#section-3">3</a>   References  .....................................................
 <a href="#section-A">A</a>   Appendix  .......................................................
 <a href="#section-A.1">A.1</a>   Requirements  .................................................
@@ -84,13 +88,19 @@ Table of Contents
    
 <a name="section-2.2" href="#section-2.2">2.2</a> Links
    
+   
+<a name="section-2.2.1" href="#section-2.2.1">2.2.1</a> Links to sections
+   
    Section links MUST<sub><a name="R2" href="#R2">2</a></sub> be written within parentheses.
    
-       "... link format rules (&sect;2.1)."
+       "... (&sect;2.1)."
    
    Link sections SHOULD<sub><a name="R3" href="#R3">3</a></sub> replace the § sign with the word 'section'.
    
-       "... link format rules (<a href="#section-2.1">section 2.1</a>)."
+       "... (<a href="#section-2.1">section 2.1</a>)."
+   
+   
+<a name="section-2.2.2" href="#section-2.2.2">2.2.2</a> Links to other URLs
    
    Plain links SHOULD<sub><a name="R4" href="#R4">4</a></sub> be written within square brackets.
    
@@ -101,12 +111,20 @@ Table of Contents
    
        "&lbrack;RFC 2119&rbrack;: https://example.com"
    
+   Defined URL lines SHOULD<sub><a name="R9" href="#R9">9</a></sub> be removed from the final document.
+   
+   
+<a name="section-2.2.3" href="#section-2.2.3">2.2.3</a> Reference links within a document
+   
    Reference links SHOULD<sub><a name="R6" href="#R6">6</a></sub> be written within square brackets.
    
        "... see [<a href="#ref-1">1</a>]."
    
    These links refer to a list of references, most likely found in a
    separate section.  In this document see (<a href="#section-3">section 3</a>).
+   
+   
+<a name="section-2.2.4" href="#section-2.2.4">2.2.4</a> Requirement links
    
    Requirement links SHOULD<sub><a name="R7" href="#R7">7</a></sub> be written within parenthesis and start with
    '#R' followed by a number.
@@ -144,6 +162,8 @@ Table of Contents
    <a href="#R4">R4</a> Plain links SHOULD be written within square brackets.
    
    <a href="#R5">R5</a> URL's of plain links SHOULD be defined on separate lines.
+   
+   <a href="#R9">R9</a> Defined URL lines SHOULD be removed from the final document.
    
    <a href="#R6">R6</a> Reference links SHOULD be written within square brackets.
    
