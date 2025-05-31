@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.5.1-dev]
+
+- Use gregoryv/sentences
+
 ## [0.5.0] 2025-05-28
 
 - Fix parsing of requirement sentences.
