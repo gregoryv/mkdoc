@@ -21,7 +21,7 @@ func sentenceSpace(w io.Writer, r io.Reader) {
 		line := s.Text()
 		fmt.Fprintln(w, line)
 
-		if !strings.Contains(line, ". ") {
+		if !strings.Contains(line, ". ") || strings.HasPrefix(line, "§") {
 			continue
 		}
 		ends := strings.Split(line, ". ")
