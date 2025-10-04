@@ -50,6 +50,7 @@ func endsWithAbbreviation(v string) bool {
 	case strings.HasSuffix(v, "ie"):
 	case strings.HasSuffix(v, "eg"):
 	case strings.HasSuffix(v, "e.g"):
+	case strings.HasSuffix(v, "."): // double or tripple dots
 	default:
 		return false
 	}

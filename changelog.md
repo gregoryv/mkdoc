@@ -1,8 +1,12 @@
 # Changelog
 
+## [0.6.1-dev]
+
+- Don't warn if multidots are followed by uppercase word
+
 ## [0.6.0] 2025-10-04
 
-- Improve new sentence identification and doublespace warnings.
+- Improve new sentence identification and doublespace warnings
 - Use gregoryv/sentences
 
 ## [0.5.0] 2025-05-28

@@ -105,6 +105,7 @@ func Test(t *testing.T) {
 			"i.e. Uppercase word?",
 			"i.e., Uppercase word?",
 			"eg. Uppercase word?",
+			"-d '{ ... OPTIONS ...}' http://www.example.com",
 		}
 		for _, v := range cases {
 			var e bytes.Buffer
