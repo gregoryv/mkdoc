@@ -1,7 +1,8 @@
 # Changelog
 
-## [0.5.1-dev]
+## [0.6.0] 2025-10-04
 
+- Improve new sentence identification and doublespace warnings.
 - Use gregoryv/sentences
 
 ## [0.5.0] 2025-05-28

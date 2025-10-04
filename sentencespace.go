@@ -25,7 +25,8 @@ func sentenceSpace(w io.Writer, r io.Reader) {
 			continue
 		}
 		ends := strings.Split(line, ". ")
-		for _, end := range ends[1:] {
+		previous := ends[0]
+		for i, end := range ends[1:] {
 			if len(end) == 0 {
 				continue
 			}
@@ -33,9 +34,24 @@ func sentenceSpace(w io.Writer, r io.Reader) {
 				continue
 			}
 			r, _ := utf8.DecodeRuneInString(end)
-			if unicode.IsUpper(r) {
+
+			if unicode.IsUpper(r) && !endsWithAbbreviation(previous) {
 				log.Printf("line %v: %s\nmissing double space between sentences", lineno, line)
 			}
+			previous = ends[i]
 		}
 	}
+}
+
+// the value v should Not carry the final .
+func endsWithAbbreviation(v string) bool {
+	switch {
+	case strings.HasSuffix(v, "i.e"):
+	case strings.HasSuffix(v, "ie"):
+	case strings.HasSuffix(v, "eg"):
+	case strings.HasSuffix(v, "e.g"):
+	default:
+		return false
+	}
+	return true
 }

@@ -85,6 +85,39 @@ func Test(t *testing.T) {
 			t.Error(fail(req, "empty"))
 		}
 	})
+
+	t.Run("", func(t *testing.T) {
+		req := "warn on missing double spaces after end of sentence"
+		var e bytes.Buffer
+		r := strings.NewReader("Hello you. What is up?")
+
+		mkdoc(&e, w, r)
+
+		got := e.String()
+		if err := contains(got, "missing double space"); err != nil {
+			t.Error(fail(req, got))
+		}
+	})
+
+	t.Run("", func(t *testing.T) {
+		req := "abbreviation followed by uppercase word is not a new sentence"
+		cases := []string{
+			"i.e. Uppercase word?",
+			"i.e., Uppercase word?",
+			"eg. Uppercase word?",
+		}
+		for _, v := range cases {
+			var e bytes.Buffer
+			r := strings.NewReader(v)
+
+			mkdoc(&e, w, r)
+
+			got := e.String()
+			if err := contains(got, "missing double space"); err == nil {
+				t.Error(fail(req, got))
+			}
+		}
+	})
 	t.Run("", func(t *testing.T) {
 		req := "already anchored links SHOULD be ignored"
 		w := &bytes.Buffer{}
