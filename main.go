@@ -23,14 +23,16 @@ Example:  https://gregoryv.github.io/mkdoc
 }
 
 var (
-	fs    = flag.NewFlagSet(os.Args[0], flag.ContinueOnError)
-	input = fs.String("i", "", "Default is stdin")
+	fs     = flag.NewFlagSet(os.Args[0], flag.ContinueOnError)
+	input  = fs.String("i", "", "File to read")
+	output = fs.String("o", "", "File to write")
 )
 
 func main() {
 	log.SetFlags(0)
 	fs.Usage = usage
 
+	// parse options
 	err := fs.Parse(os.Args[1:])
 	if err != nil {
 		if errors.Is(err, flag.ErrHelp) {
@@ -40,12 +42,8 @@ func main() {
 		return
 	}
 
-	if *input == "" && len(os.Args) > 1 {
-		handleError(usage)
-		return
-	}
-
 	var in io.Reader = os.Stdin
+	// use file input if given
 	if *input != "" {
 		fh, err := os.Open(*input)
 		if err != nil {
@@ -54,7 +52,17 @@ func main() {
 		in = fh
 	}
 
-	mkdoc(os.Stderr, os.Stdout, in)
+	var out io.Writer = os.Stdout
+	// write to file if output is given
+	if *output != "" {
+		fh, err := os.Create(*output)
+		if err != nil {
+			handleError(err)
+		}
+		out = fh
+	}
+
+	mkdoc(os.Stderr, out, in)
 }
 
 func mkdoc(err, out io.Writer, in io.Reader) {

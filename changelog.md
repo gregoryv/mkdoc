@@ -1,7 +1,8 @@
 # Changelog
 
-## [0.6.1-dev]
+## [0.7.0] 2025-10-05
 
+- Add option -o for output file
 - Add option -i for specifying input file
 - Don't warn if multidots are followed by uppercase word
 
