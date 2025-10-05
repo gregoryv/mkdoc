@@ -3,28 +3,58 @@ package main
 
 import (
 	"bytes"
+	"errors"
+	"flag"
 	"fmt"
 	"io"
 	"log"
 	"os"
 )
 
-var usage = `Usage: mkdoc < input.txt
+func usage() {
+	fmt.Fprint(fs.Output(), `Usage: mkdoc [OPTIONS]
 
 A text processing tool to generate RFC like software specifications
 from plain text files.
 
 Example:  https://gregoryv.github.io/mkdoc
-`
+`)
+	fs.PrintDefaults()
+}
+
+var (
+	fs    = flag.NewFlagSet(os.Args[0], flag.ContinueOnError)
+	input = fs.String("i", "", "Default is stdin")
+)
 
 func main() {
 	log.SetFlags(0)
-	if len(os.Args) > 1 {
+	fs.Usage = usage
+
+	err := fs.Parse(os.Args[1:])
+	if err != nil {
+		if errors.Is(err, flag.ErrHelp) {
+			return
+		}
+		handleError(err)
+		return
+	}
+
+	if *input == "" && len(os.Args) > 1 {
 		handleError(usage)
 		return
 	}
 
-	mkdoc(os.Stderr, os.Stdout, os.Stdin)
+	var in io.Reader = os.Stdin
+	if *input != "" {
+		fh, err := os.Open(*input)
+		if err != nil {
+			handleError(err)
+		}
+		in = fh
+	}
+
+	mkdoc(os.Stderr, os.Stdout, in)
 }
 
 func mkdoc(err, out io.Writer, in io.Reader) {

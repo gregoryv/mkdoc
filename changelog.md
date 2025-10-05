@@ -2,6 +2,7 @@
 
 ## [0.6.1-dev]
 
+- Add option -i for specifying input file
 - Don't warn if multidots are followed by uppercase word
 
 ## [0.6.0] 2025-10-04
