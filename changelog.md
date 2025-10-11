@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.8.0-dev]
+
+- Empty lines are not indented
+
 ## [0.7.0] 2025-10-05
 
 - Add option -o for output file
