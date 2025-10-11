@@ -9,23 +9,46 @@ import (
 	"io"
 	"log"
 	"os"
+	"text/template"
 )
 
-func usage() {
-	fmt.Fprint(fs.Output(), `Usage: mkdoc [OPTIONS]
+var tpl = template.Must(template.New("").Parse(
+	`Usage: mkdoc [OPTIONS]
 
 A text processing tool to generate RFC like software specifications
 from plain text files.
 
 Example:  https://gregoryv.github.io/mkdoc
-`)
+
+{{.Options}}
+Version..: {{.Version}}
+Revision.: {{.ShortRevision}}
+Author...: Gregory Vincic
+
+`))
+
+func usage() {
+	var options bytes.Buffer
+	fs.SetOutput(&options)
 	fs.PrintDefaults()
+
+	m := struct {
+		Version       string
+		ShortRevision string
+		Options       string
+	}{
+		Version:       Version(),
+		ShortRevision: Revision(6),
+		Options:       options.String(),
+	}
+	tpl.Execute(os.Stderr, m)
 }
 
 var (
-	fs     = flag.NewFlagSet(os.Args[0], flag.ContinueOnError)
-	input  = fs.String("i", "", "File to read")
-	output = fs.String("o", "", "File to write")
+	fs      = flag.NewFlagSet(os.Args[0], flag.ContinueOnError)
+	input   = fs.String("i", "", "File to read")
+	output  = fs.String("o", "", "File to write")
+	showVer = fs.Bool("v", false, "Show version and exit")
 )
 
 func main() {
@@ -40,6 +63,11 @@ func main() {
 		}
 		handleError(err)
 		return
+	}
+
+	if *showVer {
+		fmt.Fprintln(os.Stderr, Version())
+		os.Exit(0)
 	}
 
 	var in io.Reader = os.Stdin
