@@ -21,7 +21,7 @@ func replacerefs(w io.Writer, r io.Reader) {
 				key := line[1:i]
 				rest := line[i+2:]
 				if _, err := strconv.Atoi(key); err == nil {
-					fmt.Fprintf(w, `[<a name="ref-%s" href="#ref-%s">%s</a>] `, key, key, key)
+					fmt.Fprintf(w, `[<a id="ref-%s" href="#ref-%s">%s</a>] `, key, key, key)
 					fmt.Fprintln(w, rest)
 					continue
 				}

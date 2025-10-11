@@ -43,7 +43,7 @@ func linksections(w io.Writer, r io.Reader) {
 			continue
 		}
 		// print toc link to toc
-		format := `<a name="section-%s" href="#section-%s">%s</a> %s`
+		format := `<a id="section-%s" href="#section-%s">%s</a> %s`
 		fmt.Fprintf(w, format, s, s, s, h)
 		fmt.Fprintln(w)
 	}

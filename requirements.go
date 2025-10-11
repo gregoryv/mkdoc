@@ -61,7 +61,7 @@ func closeRequirement(w io.Writer, r *bufio.Reader) (pipeFn, error) {
 	}
 	key := string(text[:len(text)-1])
 	no := strings.TrimPrefix(key, "R")
-	fmt.Fprintf(w, `<sub><a name="%s" href="#%s">%s</a></sub>`, key, key, no)
+	fmt.Fprintf(w, `<sub><a id="%s" href="#%s">%s</a></sub>`, key, key, no)
 
 	return openRequirement, nil
 }
