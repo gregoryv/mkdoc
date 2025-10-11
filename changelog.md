@@ -2,6 +2,7 @@
 
 ## [0.8.0-dev]
 
+- Sort included requirements
 - Use id over name attribute in anchors
 - Link section text in table of contents
 - Add option -v for showing version

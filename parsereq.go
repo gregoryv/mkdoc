@@ -6,6 +6,8 @@ import (
 	"fmt"
 	"io"
 	"regexp"
+	"slices"
+	"strconv"
 	"strings"
 
 	"github.com/gregoryv/sentences"
@@ -14,6 +16,21 @@ import (
 var maxLineWidth = 69 // 72 - rfc indent of 3
 
 func includeReq(w io.Writer, r io.Reader, requirements []string) {
+	slices.SortFunc(requirements, func(a, b string) int {
+		i := strings.Index(a, " ")
+		ra, _ := strconv.ParseInt(a[1:i], 10, 64)
+		j := strings.Index(b, " ")
+		rb, _ := strconv.ParseInt(b[1:j], 10, 64)
+		switch {
+		case ra < rb:
+			return -1
+		case ra > rb:
+			return 1
+		default:
+			return 0
+		}
+	})
+
 	s := bufio.NewScanner(r)
 	for s.Scan() {
 		line := s.Text()
