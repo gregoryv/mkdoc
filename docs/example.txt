@@ -86,7 +86,18 @@ heading.
 §2.2 Links
 
 
-§2.2.1 Links to Sections
+§2.2.1 Requirement Links
+
+Requirement links SHOULD(#R7) be written within parenthesis and start with
+'#R' followed by a number.
+
+    &lpar;#R7&rpar;
+
+Reuirement links MUST(#R8) be placed directly after one of the
+keywords as defined by [RFC 2119].
+
+
+§2.2.2 Links to Sections
 
 Section links MUST(#R2) be written within parentheses.
 
@@ -97,7 +108,7 @@ Link sections SHOULD(#R3) replace the § sign with the word 'section'.
     "... (§2.1)."
 
 
-§2.2.2 External Links
+§2.2.3 External Links
 
 External links SHOULD(#R4) be written within square brackets.
 
@@ -111,7 +122,7 @@ Preferably at the end of a document or section.
 URL defined lines SHOULD(#R9) be removed from the final document.
 
 
-§2.2.3 Internal Reference Links
+§2.2.4 Internal Reference Links
 
 Internal reference links SHOULD(#R6) be written within square
 brackets.
@@ -121,16 +132,6 @@ brackets.
 These links refer to a list of references, most likely found in a
 separate section.  In this document see (§3).
 
-
-§2.2.4 Requirement Links
-
-Requirement links SHOULD(#R7) be written within parenthesis and start with
-'#R' followed by a number.
-
-    &lpar;#R7&rpar;    
-
-Reuirement links MUST(#R8) be placed directly after one of the
-keywords as defined by [RFC 2119].
 
 
 §3 References
