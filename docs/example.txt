@@ -71,8 +71,10 @@ document are to be interpreted as described in [RFC 2119] [1].
 
 §2 Format Rules
 
-The rules are meant to aid writers in maintaining focus on their
-content.
+Main purpose of formatting rules is to enable writers and readers to
+focus on content as much as possible and secondary enable tooling to
+process them for improved presentation or automated consumption.
+
 
 §2.1 Sections
 
@@ -101,12 +103,12 @@ External links SHOULD(#R4) be written within square brackets.
 
     "&lbrack;RFC 2119&rbrack;"
 
-URL's of plain links SHOULD(#R5) be defined on separate lines.
+URL's of external links SHOULD(#R5) be defined on separate lines.
 Preferably at the end of a document or section.
 
     "&lbrack;RFC 2119&rbrack;: https://example.com"
 
-Defined URL lines SHOULD(#R9) be removed from the final document.
+URL defined lines SHOULD(#R9) be removed from the final document.
 
 
 §2.2.3 Internal Reference Links
@@ -161,3 +163,22 @@ keywords as defined by [RFC 2119].
 [example.com]: https://example.com
 [RFC 2119]: https://www.ietf.org/rfc/rfc2119
 [mkdoc]: https://github.com/gregoryv/mkdoc
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
