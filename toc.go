@@ -19,9 +19,8 @@ func parsetoc(w, toc io.Writer, r io.Reader, width int) {
 		}
 		// print section link to stderr
 		// three spaces separation as found in example RFC's
-		id := fmt.Sprintf("section-%s", s)
 		fmt.Fprintf(toc,
-			`<a href="#%s">%s</a>   <a href="#%s">%s</a>`, id, s, id, h,
+			`<a href="#section-%s">%s</a>   %s`, s, s, h,
 		)
 		// fill remainig width using dots
 		n := width - len(s) - len(h) - 5
