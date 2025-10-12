@@ -13,12 +13,11 @@ a basic html header is automatically inserted at the top
 
 Abstract
 
-Documenting concepts and ideas using plain text documents.  In
-particular in software design, specifications need to be concise and
-correct.  Preformated RFC like documents are easy to read and many
-follow [RFC 2119] for phrasing requirements.  This specification
-introduces a few new rules to identify each requirement, making it
-easier to reference them while implementing.
+Specifications need to be concise and correct.  Preformated RFC like
+documents are easy to read and many follow [RFC 2119] for phrasing
+requirements.  This document specifies rules for writing plain text
+specifications where requirements are tagged and the overall text
+easy to read.
 
 
 
@@ -41,14 +40,18 @@ table of contents is automatically inserted here
 
 §1 Introduction
 
-Documenting concepts and ideas using plain text documents.  In
-particular in software design, specifications need to be concise and
-correct.  Once a specification is ready for use an implementation
-benefits if it can easily reference the requirements in some manner.
-A test suite could use the wording of a requirement verbatim if it
-fails.  This specification defines a few rules for how to tag
-requirements and provides a tool for parsing them out of plain text
-documents.
+Plain text documents, i.e. RFC series, have a proven track record for
+writing specifications.  These documents have been enhanced and
+clarified over time by subsequent sepcifications like the [RFC 2119].
+Specifications that govern software are often written in this format.
+There is however no easy way to refer to requirements directly when
+validating software.  A test suite could e.g. use the wording of a
+requirement verbatim if it fails, but duplicating the text within a
+test is not feasible as requirements change over time.  Having a way
+to easily index all requirements and reference them elsewhere keeps
+the requirements at it's source.  Differentiating changes in plain
+text is well defined and used in development making it a powerful way
+of conveing requirement changes over time.
 
 §1.1 Purpose
 
