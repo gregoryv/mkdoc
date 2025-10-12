@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"os"
 	"strings"
 	"testing"
@@ -19,7 +18,11 @@ func Test(t *testing.T) {
 		before := handleError
 		defer func() { handleError = before }()
 
-		handleError = func(v ...any) { t.Log(v) }
+		handleError = func(v ...any) {
+			if !strings.HasPrefix(v[0].(string), "Usage:") {
+				t.Error(v)
+			}
+		}
 		main()
 	})
 
@@ -33,8 +36,8 @@ func Test(t *testing.T) {
 		main()
 	})
 
-	e := ioutil.Discard
-	w := ioutil.Discard
+	e := io.Discard
+	w := io.Discard
 	r := strings.NewReader("")
 
 	t.Run("", func(t *testing.T) {
@@ -154,7 +157,7 @@ Duplicate SHOULD(#R1) also fail.
 }
 
 func Benchmark(b *testing.B) {
-	d := ioutil.Discard
+	d := io.Discard
 	os.Chdir("docs")
 	r := load("example.txt")
 
