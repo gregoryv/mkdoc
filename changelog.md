@@ -1,7 +1,8 @@
 # Changelog
 
-## [0.8.0-dev]
+## [0.8.0] 2025-10-12
 
+- Lines beginning with TAB character are not indented
 - Sort included requirements
 - Use id over name attribute in anchors
 - Add option -v for showing version

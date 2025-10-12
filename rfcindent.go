@@ -11,7 +11,7 @@ func rfcindent(w io.Writer, r io.Reader) {
 	s := bufio.NewScanner(r)
 	for s.Scan() {
 		line := s.Text()
-		if strings.HasPrefix(line, "§") || len(line) == 0 {
+		if strings.HasPrefix(line, "§") || len(line) == 0 || line[0] == '\t' {
 			// no indent
 			fmt.Fprintln(w, line)
 			continue
