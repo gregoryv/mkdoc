@@ -41,10 +41,14 @@ func usage() {
 		ShortRevision: Revision(6),
 		Options:       options.String(),
 	}
-	tpl.Execute(os.Stderr, m)
+	tpl.Execute(stderr, m)
 }
 
 var (
+	stderr io.Writer = os.Stderr
+	stdout io.Writer = os.Stdout
+	stdin  io.Reader = os.Stdin
+
 	fs      = flag.NewFlagSet(os.Args[0], flag.ContinueOnError)
 	input   = fs.String("i", "", "File to read")
 	output  = fs.String("o", "", "File to write")
@@ -66,11 +70,11 @@ func main() {
 	}
 
 	if *showVer {
-		fmt.Fprintln(os.Stderr, Version())
-		os.Exit(0)
+		fmt.Fprintln(stdout, Version())
+		return
 	}
 
-	var in io.Reader = os.Stdin
+	var in io.Reader = stdin
 	// use file input if given
 	if *input != "" {
 		fh, err := os.Open(*input)
@@ -80,7 +84,7 @@ func main() {
 		in = fh
 	}
 
-	var out io.Writer = os.Stdout
+	var out io.Writer = stdout
 	// write to file if output is given
 	if *output != "" {
 		fh, err := os.Create(*output)
@@ -90,7 +94,7 @@ func main() {
 		out = fh
 	}
 
-	mkdoc(os.Stderr, out, in)
+	mkdoc(stderr, out, in)
 }
 
 func mkdoc(err, out io.Writer, in io.Reader) {

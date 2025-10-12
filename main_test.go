@@ -14,12 +14,16 @@ import (
 func Test(t *testing.T) {
 	t.Run("", func(t *testing.T) {
 		_ = "Any argument SHOULD display usage"
-		os.Args = []string{"", "--help"} // first arg is command name
-		before := handleError
-		defer func() { handleError = before }()
+		os.Args = []string{"", "--unknown"} // first arg is command name
 
-		handleError = func(v ...any) {
-			if !strings.HasPrefix(v[0].(string), "Usage:") {
+		catch(t)
+		var buf bytes.Buffer
+
+		// set globals, these will be reset by catch
+		stderr = &buf
+		handleError = func(_ ...any) {
+			v := buf.String()
+			if !strings.Contains(v, "Usage:") {
 				t.Error(v)
 			}
 		}
@@ -167,6 +171,15 @@ func Benchmark(b *testing.B) {
 }
 
 // ----------------------------------------
+
+func catch(t *testing.T) {
+	bstderr := stderr
+	bhandleError := handleError
+	t.Cleanup(func() {
+		handleError = bhandleError
+		stderr = bstderr
+	})
+}
 
 func load(filename string) io.Reader {
 	data, err := os.ReadFile(filename)
