@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.9.0-dev]
+
+- Add "ipr statement" as a non section header
+
 ## [0.8.0] 2025-10-12
 
 - Lines beginning with TAB character are not indented

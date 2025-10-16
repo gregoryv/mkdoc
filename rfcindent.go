@@ -31,4 +31,7 @@ var nonSectionHeader = map[string]bool{
 	"copyright notice":    true,
 	"abstract":            true,
 	"table of contents":   true,
+
+	// https://www.rfc-editor.org/old/instructions2authors.txt
+	"ipr statement": true,
 }
