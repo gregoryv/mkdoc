@@ -13,7 +13,7 @@ import (
 
 func Test(t *testing.T) {
 	t.Run("", func(t *testing.T) {
-		_ = "Any argument SHOULD display usage"
+		req := "Any argument SHOULD display usage"
 		os.Args = []string{"", "--unknown"} // first arg is command name
 
 		catch(t)
@@ -24,7 +24,7 @@ func Test(t *testing.T) {
 		handleError = func(_ ...any) {
 			v := buf.String()
 			if !strings.Contains(v, "Usage:") {
-				t.Error(v)
+				t.Error(v, "\nFAIL:", req)
 			}
 		}
 		main()
