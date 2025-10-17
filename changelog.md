@@ -2,6 +2,7 @@
 
 ## [0.9.1-dev]
 
+- Link internal requirements as specified in #R12
 - Fix validation of requirement identifiers after double keywords
   e.g. MUST NOT(#R99) was still warned about.
 

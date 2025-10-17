@@ -35,6 +35,7 @@ func openTag(w io.Writer, r *bufio.Reader, links map[string]string) (parseFn, er
 		w.Write(head)
 		return nil, err
 	}
+	// skip indented text
 	i := bytes.LastIndex(head, []byte("\n"))
 	if i > 0 {
 		w.Write(head[:i])
@@ -71,7 +72,10 @@ func closeTag(w io.Writer, r *bufio.Reader, links map[string]string) (parseFn, e
 		fmt.Fprintf(w, `[<a href="#ref-%s">%s</a>]`, key, key)
 		return openTag, nil
 	}
-
+	if strings.HasPrefix(key, "#R") {
+		fmt.Fprintf(w, `<a href="%s">%s</a>`, key, key[1:])
+		return openTag, nil
+	}
 	url, found := links[key]
 	if !found {
 		w.Write([]byte{'['})
