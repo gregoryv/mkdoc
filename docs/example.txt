@@ -1,15 +1,11 @@
-            Format rules for plain-text specifications
-
-                         by Gregory Vincic
+<cat logo.txt>
 
 
 
 Abstract
 
-Specifications need to be concise and correct.  Preformated RFC like
-documents are easy to read and many follow [RFC 2119] for phrasing
-requirements.  This document defines rules for authoring plain-text
-specifications and tagging requirements for easy reference.
+Special sections that come before the table of contents are excluded
+in table of contents.  These set of sections are hardcoded.
 
 
 
