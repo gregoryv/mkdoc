@@ -2,10 +2,12 @@ package main
 
 import (
 	"bufio"
+	"bytes"
 	"errors"
 	"fmt"
 	"io"
 	"log"
+	"regexp"
 )
 
 // replaceSections converts (§...) to a link to  #section-(\d+) link.
@@ -31,9 +33,21 @@ func openSection(w io.Writer, r *bufio.Reader) (pipeFn, error) {
 		w.Write(head)
 		return nil, err
 	}
+	i := bytes.LastIndex(head, []byte("\n"))
+	if i > 0 {
+		w.Write(head[:i])
+		head = head[i:]
+	}
+	if indented.Match(head) {
+		w.Write(head)
+		return openSection, nil
+	}
 	w.Write(head)
 	return sectionRune, nil
 }
+
+// our indentation is 3, so one more is considered indented
+var indented = regexp.MustCompile(`\n\s{4,}\"`)
 
 func sectionRune(w io.Writer, r *bufio.Reader) (pipeFn, error) {
 	v, _, err := r.ReadRune()

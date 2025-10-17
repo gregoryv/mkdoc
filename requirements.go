@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"bytes"
 	"errors"
 	"fmt"
 	"io"
@@ -31,6 +32,15 @@ func openRequirement(w io.Writer, r *bufio.Reader) (pipeFn, error) {
 	if err != nil {
 		w.Write(head)
 		return nil, err
+	}
+	i := bytes.LastIndex(head, []byte("\n"))
+	if i > 0 {
+		w.Write(head[:i])
+		head = head[i:]
+	}
+	if indented.Match(head) {
+		w.Write(head)
+		return openRequirement, nil
 	}
 	n := len(head)
 	if n > 0 {

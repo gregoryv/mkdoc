@@ -2,16 +2,9 @@
 
 <meta charset="utf-8">
 <pre>
+               Format rules for plain-text specifications
 
-                       /$$             /$$                    
-                      | $$            | $$                    
-         /$$$$$$/$$$$ | $$   /$$  /$$$$$$$  /$$$$$$   /$$$$$$$
-        | $$_  $$_  $$| $$  /$$/ /$$__  $$ /$$__  $$ /$$_____/
-        | $$ \ $$ \ $$| $$$$$$/ | $$  | $$| $$  \ $$| $$      
-        | $$ | $$ | $$| $$_  $$ | $$  | $$| $$  | $$| $$      
-        | $$ | $$ | $$| $$ \  $$|  $$$$$$$|  $$$$$$/|  $$$$$$$
-        |__/ |__/ |__/|__/  \__/ \_______/ \______/  \_______/                                                      
-
+                            by Gregory Vincic
 
 
 
@@ -19,9 +12,10 @@ Abstract
 
    Specifications need to be concise and correct.  Preformated RFC like
    documents are easy to read and many follow <a href="https://www.ietf.org/rfc/rfc2119">RFC 2119</a> for phrasing
-   requirements.  This document specifies rules for writing plain text
-   specifications where requirements are tagged and the overall text
-   easy to read.
+   requirements.  This document defines rules for authoring plain-text
+   specifications and tagging requirements for easy reference.
+
+
 
 
 
@@ -42,28 +36,24 @@ Table of Contents
 <a href="#section-A.1">A.1</a>   Requirements  .................................................
 
 
-
-
-
-
 <a id="section-1" href="#section-1">1</a> Introduction
 
-   Plain text documents, i.e. RFC series, have a proven track record for
-   writing specifications.  These documents have been enhanced and
+   Plain-text documents, i.e. RFC series, have a proven track record as
+   workable specifications.  These documents have been enhanced and
    clarified over time by subsequent sepcifications like the <a href="https://www.ietf.org/rfc/rfc2119">RFC 2119</a>.
    Specifications that govern software are often written in this format.
-   There is however no easy way to refer to requirements directly when
+   There is however no easy way to reference requirements directly when
    validating software.  A test suite could e.g. use the wording of a
    requirement verbatim if it fails, but duplicating the text within a
    test is not feasible as requirements change over time.  Having a way
    to easily index all requirements and reference them elsewhere keeps
    the requirements at it's source.  Differentiating changes in plain
-   text is well defined and used in development making it a powerful way
-   of conveing requirement changes over time.
+   text is well defined, making it a powerful way of conveing changes
+   over time.
 
 <a id="section-1.1" href="#section-1.1">1.1</a> Purpose
 
-   Specify minimal format rules to plain text documents which enables
+   Specify minimal format rules to plain-text documents which enables
    developers to use processing tools, like <a href="https://github.com/gregoryv/mkdoc">mkdoc</a>, when producing the
    final document.  The final document in this context is a preformatted
    HTML file.
@@ -82,6 +72,7 @@ Table of Contents
    Main purpose of formatting rules is to enable writers and readers to
    focus on content as much as possible and secondary enable tooling to
    process them for improved presentation or automated consumption.
+   The <a href="https://gregoryv.github.io/water/spec.txt">source of this document</a> is written following these rules.
 
 
 <a id="section-2.1" href="#section-2.1">2.1</a> Sections
@@ -99,7 +90,7 @@ Table of Contents
    Requirement links SHOULD<sub><a id="R7" href="#R7">7</a></sub> be written within parenthesis and start with
    '#R' followed by a number.
 
-       &lpar;#R7&rpar;
+       "... (#R7) ..."
 
    Reuirement links MUST<sub><a id="R8" href="#R8">8</a></sub> be placed directly after one of the
    keywords as defined by <a href="https://www.ietf.org/rfc/rfc2119">RFC 2119</a>.
@@ -107,20 +98,21 @@ Table of Contents
 
 <a id="section-2.2.2" href="#section-2.2.2">2.2.2</a> Links to Sections
 
-   Section links MUST<sub><a id="R2" href="#R2">2</a></sub> be written within parentheses.
+   Links to sections MUST<sub><a id="R2" href="#R2">2</a></sub> be written within parentheses.
 
-       "... (&sect;2.1)."
+       "... (§9.1) ..."
 
-   Link sections SHOULD<sub><a id="R3" href="#R3">3</a></sub> replace the § sign with the word 'section'.
+   Transformed links to sections SHOULD<sub><a id="R3" href="#R3">3</a></sub> replace the § sign with the
+   word 'section'.
 
-       "... (<a href="#section-2.1">section 2.1</a>)."
+       "... (section 9.1) ..."
 
 
 <a id="section-2.2.3" href="#section-2.2.3">2.2.3</a> External Links
 
    External links SHOULD<sub><a id="R4" href="#R4">4</a></sub> be written within square brackets.
 
-       "&lbrack;RFC 2119&rbrack;"
+       "... [RFC 2119] ..."
 
    URL's of external links SHOULD<sub><a id="R5" href="#R5">5</a></sub> be defined on separate lines.
    Preferably at the end of a document or section.
@@ -135,10 +127,10 @@ Table of Contents
    Internal reference links SHOULD<sub><a id="R6" href="#R6">6</a></sub> be written within square
    brackets.
 
-       "... see [<a href="#ref-1">1</a>]."
+       "... see [1] ..."
 
-   These links refer to a list of references, most likely found in a
-   separate section.  In this document see (<a href="#section-3">section 3</a>).
+   These links refer to a list of references in the same document.  In
+   this document see (<a href="#section-3">section 3</a>).
 
 
 
@@ -162,9 +154,10 @@ Table of Contents
    <a href="#R1">R1</a> Sections SHOULD start with the § sign followed by a level and a
       heading.
 
-   <a href="#R2">R2</a> Section links MUST be written within parentheses.
+   <a href="#R2">R2</a> Links to sections MUST be written within parentheses.
 
-   <a href="#R3">R3</a> Link sections SHOULD replace the § sign with the word 'section'.
+   <a href="#R3">R3</a> Transformed links to sections SHOULD replace the § sign with the
+      word 'section'.
 
    <a href="#R4">R4</a> External links SHOULD be written within square brackets.
 
@@ -180,8 +173,6 @@ Table of Contents
       keywords as defined by <a href="https://www.ietf.org/rfc/rfc2119">RFC 2119</a>.
 
    <a href="#R9">R9</a> URL defined lines SHOULD be removed from the final document.
-
-
 
 
 

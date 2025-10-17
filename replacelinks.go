@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"bytes"
 	"errors"
 	"fmt"
 	"io"
@@ -33,6 +34,15 @@ func openTag(w io.Writer, r *bufio.Reader, links map[string]string) (parseFn, er
 	if err != nil {
 		w.Write(head)
 		return nil, err
+	}
+	i := bytes.LastIndex(head, []byte("\n"))
+	if i > 0 {
+		w.Write(head[:i])
+		head = head[i:]
+	}
+	if indented.Match(head) {
+		w.Write(head)
+		return openTag, nil
 	}
 	if n := len(head); n > 0 && head[n-1] == '[' {
 		// skip [

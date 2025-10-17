@@ -1,7 +1,8 @@
 # Changelog
 
-## [0.9.0-dev]
+## [0.9.0] 2025-10-17
 
+- Links are not replaced in indented and quoted single lines
 - Add "ipr statement" as a non section header
 
 ## [0.8.0] 2025-10-12
