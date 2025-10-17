@@ -46,7 +46,7 @@ func Test(t *testing.T) {
 
 	t.Run("", func(t *testing.T) {
 		_ = "Format empty input SHOULD do nothing"
-		mkdoc(e, w, r)
+		run(e, w, r)
 	})
 
 	t.Run("", func(t *testing.T) {
@@ -56,7 +56,7 @@ func Test(t *testing.T) {
 		os.Chdir("docs")
 		r := load("example.txt")
 
-		mkdoc(&e, &w, r)
+		run(&e, &w, r)
 		golden.AssertWith(t, w.String(), "out.html")
 		golden.AssertWith(t, e.String(), "err.html")
 	})
@@ -64,7 +64,7 @@ func Test(t *testing.T) {
 	t.Run("", func(t *testing.T) {
 		_ = "missing closing bracket in link SHOULD warn"
 		r := strings.NewReader("... [text ")
-		mkdoc(e, w, r)
+		run(e, w, r)
 	})
 
 	t.Run("", func(t *testing.T) {
@@ -72,7 +72,7 @@ func Test(t *testing.T) {
 		var e bytes.Buffer
 		r := strings.NewReader("<cat nosuch.txt>")
 
-		mkdoc(&e, w, r)
+		run(&e, w, r)
 
 		got := e.String()
 		if got == "" {
@@ -85,7 +85,7 @@ func Test(t *testing.T) {
 		var e bytes.Buffer
 		r := strings.NewReader("§ab")
 
-		mkdoc(&e, w, r)
+		run(&e, w, r)
 
 		got := e.String()
 		if got == "" {
@@ -98,7 +98,7 @@ func Test(t *testing.T) {
 		var e bytes.Buffer
 		r := strings.NewReader("Hello you. What is up?")
 
-		mkdoc(&e, w, r)
+		run(&e, w, r)
 
 		got := e.String()
 		if err := contains(got, "missing double space"); err != nil {
@@ -118,7 +118,7 @@ func Test(t *testing.T) {
 			var e bytes.Buffer
 			r := strings.NewReader(v)
 
-			mkdoc(&e, w, r)
+			run(&e, w, r)
 
 			got := e.String()
 			if err := contains(got, "missing double space"); err == nil {
@@ -131,7 +131,7 @@ func Test(t *testing.T) {
 		w := &bytes.Buffer{}
 		txt := `... [<a href="#x">text</a>] .. `
 		r := strings.NewReader(txt)
-		mkdoc(e, w, r)
+		run(e, w, r)
 		if err := contains(w.String(), txt); err != nil {
 			t.Error(fail(req, err))
 		}
@@ -150,7 +150,7 @@ NOT succeed.
 Duplicate SHOULD(#R1) also fail.
 `)
 		e := &bytes.Buffer{}
-		mkdoc(e, w, r)
+		run(e, w, r)
 
 		got := e.String()
 		err := contains(got, "line: 4", "line: 6", "line: 8", "line: 9")
@@ -166,7 +166,7 @@ func Benchmark(b *testing.B) {
 	r := load("example.txt")
 
 	for b.Loop() {
-		mkdoc(d, d, r)
+		run(d, d, r)
 	}
 }
 

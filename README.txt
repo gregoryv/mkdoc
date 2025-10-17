@@ -1,8 +1,8 @@
-mkdoc - text to html for plain text documents
+stp - specification text processor 
 
-    $ go install github.com/gregoryv/mkdoc@latest
+    $ go install github.com/gregoryv/stp@latest
 
-See example at https://gregoryv.github.io/mkdoc/
+See example at https://gregoryv.github.io/stp/
 
 
 Features

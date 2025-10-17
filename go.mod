@@ -1,4 +1,4 @@
-module github.com/gregoryv/mkdoc
+module github.com/gregoryv/stp
 
 go 1.24.3
 
