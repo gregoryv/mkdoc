@@ -14,7 +14,7 @@ Don't use the § sign before these.
 Abstract
 
 This tool is used when working with specifications written in plain
-text that follow [RFC 2119] and the [water] format for tagging
+text that follow [RFC 2119] and the [syhoc] format for tagging
 requirements.
 
 
@@ -30,7 +30,7 @@ Table of Contents
 §1 Introduction
 
 This tools primary purpose is to convert text documents into HTML.
-Most formatting rules are defined in the [water] specification.
+Most formatting rules are defined in the [syhoc] specification.
 
 §2 Usage
 
@@ -90,8 +90,7 @@ This tool warns if there are errors in the input document.
 <!-- links are excluded from final output -->
 
 [RFC 2119]: https://www.ietf.org/rfc/rfc2119
-[stp]: https://github.com/gregoryv/stp
-[water]: https://gregoryv.github.io/water
+[syhoc]: https://gregoryv.github.io/syhoc
 
 
 
