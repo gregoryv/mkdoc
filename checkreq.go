@@ -19,8 +19,8 @@ func checkreq(e, w io.Writer, r io.Reader) {
 	ok := true
 
 	keywords := []string{
-		"MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-		"SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", "OPTIONAL",
+		"MUST NOT", "SHALL NOT", "SHOULD NOT", "MUST", "REQUIRED",
+		"SHALL", "SHOULD", "RECOMMENDED", "MAY", "OPTIONAL",
 	}
 
 	index := make(map[string]int)
@@ -53,6 +53,7 @@ loop:
 		line = s.Text()
 		fmt.Fprintln(w, line)
 
+		// i.e. MUST\nNOT
 		if checkNOT {
 			if strings.HasPrefix(line, "NOT") {
 				warn(line[3:])
@@ -73,6 +74,9 @@ loop:
 					}
 				}
 				warn(line[j:])
+				// we assume only one keywords is on each line
+				continue loop
+
 			}
 		}
 	}

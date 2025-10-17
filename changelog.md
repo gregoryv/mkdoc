@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.9.1-dev]
+
+- Fix validation of requirement identifiers after double keywords
+  e.g. MUST NOT(#R99) was still warned about.
+
 ## [0.9.0] 2025-10-17
 
 - Links are not replaced in indented and quoted single lines
