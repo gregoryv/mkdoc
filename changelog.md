@@ -1,7 +1,8 @@
 # Changelog
 
-## [0.9.1-dev]
+## [0.10.0] 2025-10-18
 
+- Rename project to specification text processor (stp)
 - Link internal requirements as specified in #R12
 - Fix validation of requirement identifiers after double keywords
   e.g. MUST NOT(#R99) was still warned about.
