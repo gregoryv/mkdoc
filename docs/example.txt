@@ -83,30 +83,9 @@ This tool warns if there are errors in the input document.
 
 
 
-
-
-
-
 <!-- links are excluded from final output -->
 
 [RFC 2119]: https://www.ietf.org/rfc/rfc2119
 [syhoc]: https://gregoryv.github.io/syhoc
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

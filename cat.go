@@ -2,30 +2,38 @@ package stp
 
 import (
 	"bufio"
+	"errors"
 	"fmt"
 	"io"
 	"os"
 	"strings"
 )
 
-func Cat(stderr, w io.Writer, r io.Reader, delim string) {
-	s := bufio.NewScanner(r)
+// Cat looks for <cat FILENAME> in injects the file.
+func Cat(stderr, stdout io.Writer, stdin io.Reader) {
+	r := bufio.NewReader(stdin)
 	prefix := "<cat "
-	for s.Scan() {
-		line := s.Text()
 
+	for {
+		line, err := r.ReadString('\n')
+		if len(line) == 0 && errors.Is(err, io.EOF) {
+			return
+		}
 		if strings.HasPrefix(line, prefix) {
 			f := line[len(prefix):]
-			f = strings.Trim(f, " >")
+			f = strings.Trim(f, " >\n")
 			fh, err := os.Open(f)
 			if err != nil {
 				fmt.Fprint(stderr, err)
 				continue
 			}
-			io.Copy(w, fh)
+			io.Copy(stdout, fh)
 			fh.Close()
 		} else {
-			fmt.Fprintln(w, line)
+			fmt.Fprint(stdout, line)
+			if errors.Is(err, io.EOF) {
+				return
+			}
 		}
 	}
 }

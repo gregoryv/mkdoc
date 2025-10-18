@@ -18,7 +18,7 @@ func run(stderr, stdout io.Writer, stdin io.Reader) {
 	}
 
 	// first pass; include files
-	next(func() { stp.Cat(stderr, w, r, "<>") })
+	next(func() { stp.Cat(stderr, w, r) })
 
 	// parse links early
 	var links map[string]string
