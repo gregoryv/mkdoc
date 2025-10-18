@@ -65,6 +65,9 @@ func ListRequirements(w io.Writer, r io.Reader, requirements []string) {
 	}
 }
 
+// ParseRequirements finds all sentences with requirement identifiers
+// starting with '(#R'. The identifier is moved to the front of the
+// sentence.
 func ParseRequirements(w io.Writer, r io.Reader) []string {
 	// use a pipe to parse sentences and just copy the data
 	r1, w1 := io.Pipe()
