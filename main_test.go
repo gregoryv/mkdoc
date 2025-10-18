@@ -12,6 +12,12 @@ import (
 )
 
 func Test(t *testing.T) {
+	t.Run("usage", func(t *testing.T) {
+		var buf bytes.Buffer
+		usage(&buf)()
+		golden.AssertWith(t, buf.String(), "testdata/usage.txt")
+	})
+
 	t.Run("", func(t *testing.T) {
 		req := "Any argument SHOULD display usage"
 		os.Args = []string{"", "--unknown"} // first arg is command name

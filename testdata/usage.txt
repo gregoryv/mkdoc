@@ -1,0 +1,15 @@
+Usage: stp [OPTIONS]
+
+A text processing tool to generate RFC like software specifications
+from plain text files.
+
+Example:  https://gregoryv.github.io/stp
+
+  -i string
+    	File to read
+  -o string
+    	File to write
+  -v	Show version and exit
+
+Author...: Gregory Vincic
+

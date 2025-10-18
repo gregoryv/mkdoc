@@ -20,27 +20,27 @@ from plain text files.
 Example:  https://gregoryv.github.io/stp
 
 {{.Options}}
-Version..: {{.Version}}
-Revision.: {{.ShortRevision}}
 Author...: Gregory Vincic
 
 `))
 
-func usage() {
-	var options bytes.Buffer
-	fs.SetOutput(&options)
-	fs.PrintDefaults()
+func usage(w io.Writer) func() {
+	return func() {
+		var options bytes.Buffer
+		fs.SetOutput(&options)
+		fs.PrintDefaults()
 
-	m := struct {
-		Version       string
-		ShortRevision string
-		Options       string
-	}{
-		Version:       Version(),
-		ShortRevision: Revision(6),
-		Options:       options.String(),
+		m := struct {
+			Version       string
+			ShortRevision string
+			Options       string
+		}{
+			Version:       Version(),
+			ShortRevision: Revision(6),
+			Options:       options.String(),
+		}
+		tpl.Execute(w, m)
 	}
-	tpl.Execute(stderr, m)
 }
 
 var (
@@ -55,7 +55,7 @@ var (
 )
 
 func main() {
-	fs.Usage = usage
+	fs.Usage = usage(stderr)
 
 	// parse options
 	err := fs.Parse(os.Args[1:])
