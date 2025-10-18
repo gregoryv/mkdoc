@@ -1,4 +1,4 @@
-package main
+package stp
 
 import (
 	"bufio"
@@ -10,9 +10,9 @@ import (
 	"strings"
 )
 
-// replacelinks converts [...] to a link using the given index of
+// ReplaceLinks converts [...] to a link using the given index of
 // links. If it's [\d+] it's converted to a #ref-(\d+) link.
-func replacelinks(stderr, w io.Writer, r io.Reader, links map[string]string) {
+func ReplaceLinks(stderr, w io.Writer, r io.Reader, links map[string]string) {
 	next := openTag
 	in := bufio.NewReader(r)
 	var err error

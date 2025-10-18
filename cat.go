@@ -1,4 +1,4 @@
-package main
+package stp
 
 import (
 	"bufio"
@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-func cat(stderr, w io.Writer, r io.Reader, delim string) {
+func Cat(stderr, w io.Writer, r io.Reader, delim string) {
 	s := bufio.NewScanner(r)
 	prefix := "<cat "
 	for s.Scan() {

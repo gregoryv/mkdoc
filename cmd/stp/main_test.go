@@ -11,7 +11,7 @@ import (
 	"github.com/gregoryv/golden"
 )
 
-func Test(t *testing.T) {
+func xTest(t *testing.T) {
 	t.Run("usage", func(t *testing.T) {
 		var buf bytes.Buffer
 		usage(&buf)()

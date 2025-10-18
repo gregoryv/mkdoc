@@ -1,4 +1,4 @@
-package main
+package stp
 
 import (
 	"bufio"
@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func parsetoc(stderr, w, toc io.Writer, r io.Reader, width int) {
+func ParseTOC(stderr, w, toc io.Writer, r io.Reader, width int) {
 	s := bufio.NewScanner(r)
 	for s.Scan() {
 		line := s.Text()
@@ -31,7 +31,7 @@ func parsetoc(stderr, w, toc io.Writer, r io.Reader, width int) {
 	}
 }
 
-func linksections(stderr, w io.Writer, r io.Reader) {
+func LinkSections(stderr, w io.Writer, r io.Reader) {
 	s := bufio.NewScanner(r)
 	for s.Scan() {
 		line := s.Text()
@@ -63,7 +63,7 @@ func parseSection(stderr io.Writer, line string) (s, h string, ok bool) {
 	return
 }
 
-func inserttoc(w io.Writer, r, toc io.Reader) {
+func InsertTOC(w io.Writer, r, toc io.Reader) {
 	s := bufio.NewScanner(r)
 	for s.Scan() {
 		line := s.Text()

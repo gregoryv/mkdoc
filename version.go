@@ -1,4 +1,4 @@
-package main
+package stp
 
 import (
 	_ "embed"

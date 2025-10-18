@@ -1,4 +1,4 @@
-package main
+package stp
 
 import (
 	"bufio"
@@ -7,8 +7,8 @@ import (
 	"strings"
 )
 
-// emptylines warns if empty lines contains only spaces or tabs
-func emptyLines(stderr, w io.Writer, r io.Reader) {
+// EmptyLines warns if empty lines only contain spaces or tabs.
+func EmptyLines(stderr, w io.Writer, r io.Reader) {
 	s := bufio.NewScanner(r)
 
 	var lineno int

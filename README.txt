@@ -1,6 +1,6 @@
 stp - specification text processor 
 
-    $ go install github.com/gregoryv/stp@latest
+    $ go install github.com/gregoryv/stp/cmd/stp@latest
 
 See example at https://gregoryv.github.io/stp/
 

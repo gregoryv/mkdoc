@@ -1,4 +1,4 @@
-package main
+package stp
 
 import (
 	"bufio"
@@ -9,9 +9,9 @@ import (
 	"unicode/utf8"
 )
 
-// sentenceSpace warns if two adjecent sentences are not separated by
+// SentenceSpace warns if two adjecent sentences are not separated by
 // double spaces.
-func sentenceSpace(stderr, w io.Writer, r io.Reader) {
+func SentenceSpace(stderr, w io.Writer, r io.Reader) {
 	s := bufio.NewScanner(r)
 
 	var lineno int

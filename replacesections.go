@@ -1,4 +1,4 @@
-package main
+package stp
 
 import (
 	"bufio"
@@ -9,8 +9,8 @@ import (
 	"regexp"
 )
 
-// replaceSections converts (§...) to a link to  #section-(\d+) link.
-func replaceSections(stderr, w io.Writer, r io.Reader) {
+// ReplaceSections converts (§...) to a link to  #section-(\d+) link.
+func ReplaceSections(stderr, w io.Writer, r io.Reader) {
 	next := openSection
 	in := bufio.NewReader(r)
 	var err error

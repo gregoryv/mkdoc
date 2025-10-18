@@ -1,4 +1,4 @@
-package main
+package stp
 
 import (
 	"bufio"
@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func dropcomments(w io.Writer, r io.Reader) {
+func DropHTMLComments(w io.Writer, r io.Reader) {
 	s := bufio.NewScanner(r)
 	var inside bool
 	for s.Scan() {

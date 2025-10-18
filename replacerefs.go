@@ -1,4 +1,4 @@
-package main
+package stp
 
 import (
 	"bufio"
@@ -8,9 +8,9 @@ import (
 	"strings"
 )
 
-// replacerefs converts lines starting with `[\d+] ...` with named
+// AnchorReferences converts lines starting with `[\d+] ...` with named
 // anchor.
-func replacerefs(w io.Writer, r io.Reader) {
+func AnchorReferences(w io.Writer, r io.Reader) {
 	s := bufio.NewScanner(r)
 
 	for s.Scan() {

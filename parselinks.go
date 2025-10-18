@@ -1,4 +1,4 @@
-package main
+package stp
 
 import (
 	"bufio"
@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func parselinks(w io.Writer, r io.Reader) map[string]string {
+func ParseLinks(w io.Writer, r io.Reader) map[string]string {
 	s := bufio.NewScanner(r)
 	res := make(map[string]string)
 

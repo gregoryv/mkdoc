@@ -1,4 +1,4 @@
-package main
+package stp
 
 import (
 	"bufio"
@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func rfcindent(w io.Writer, r io.Reader) {
+func RFCIndent(w io.Writer, r io.Reader) {
 	s := bufio.NewScanner(r)
 	for s.Scan() {
 		line := s.Text()

@@ -1,4 +1,4 @@
-package main
+package stp
 
 import (
 	"bufio"
@@ -9,8 +9,8 @@ import (
 	"strings"
 )
 
-// replaceRequirements converts (#R\d+) to a link to  #requirement-(\d+) link.
-func replaceRequirements(stderr, w io.Writer, r io.Reader) {
+// ReplaceRequirements converts (#R\d+) to a link to  #requirement-(\d+) link.
+func ReplaceRequirements(stderr, w io.Writer, r io.Reader) {
 	next := openRequirement
 	in := bufio.NewReader(r)
 	var err error

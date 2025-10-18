@@ -1,4 +1,4 @@
-package main
+package stp
 
 import (
 	"bufio"
@@ -7,9 +7,9 @@ import (
 	"strings"
 )
 
-// checkreq checks that all requirement level words as specified in
+// CheckRequirements checks that all requirement level words as specified in
 // RFC 2119 are followed by (#R\d+)
-func checkreq(e, w io.Writer, r io.Reader) {
+func CheckRequirements(e, w io.Writer, r io.Reader) {
 	s := bufio.NewScanner(r)
 	var checkNOT bool
 

@@ -2,6 +2,7 @@
 
 ## [0.11.0-dev]
 
+- Move command to cmd/stp
 - Add "changelog" as non section header
 
 ## [0.10.0] 2025-10-18

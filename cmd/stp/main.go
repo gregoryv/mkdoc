@@ -9,15 +9,17 @@ import (
 	"io"
 	"os"
 	"text/template"
+
+	"github.com/gregoryv/stp"
 )
 
 var tpl = template.Must(template.New("").Parse(
-	`Usage: stp [OPTIONS]
+	`Usage: main [OPTIONS]
 
 A text processing tool to generate RFC like software specifications
 from plain text files.
 
-Example:  https://gregoryv.github.io/stp
+Example:  https://gregoryv.github.io/main
 
 {{.Options}}
 Author...: Gregory Vincic
@@ -35,8 +37,8 @@ func usage(w io.Writer) func() {
 			ShortRevision string
 			Options       string
 		}{
-			Version:       Version(),
-			ShortRevision: Revision(6),
+			Version:       stp.Version(),
+			ShortRevision: stp.Revision(6),
 			Options:       options.String(),
 		}
 		tpl.Execute(w, m)
@@ -68,7 +70,7 @@ func main() {
 	}
 
 	if *showVer {
-		fmt.Fprintln(stdout, Version())
+		fmt.Fprintln(stdout, stp.Version())
 		return
 	}
 

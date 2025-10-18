@@ -1,4 +1,4 @@
-package main
+package stp
 
 import (
 	"bufio"
@@ -15,7 +15,7 @@ import (
 
 var maxLineWidth = 69 // 72 - rfc indent of 3
 
-func includeReq(w io.Writer, r io.Reader, requirements []string) {
+func ListRequirements(w io.Writer, r io.Reader, requirements []string) {
 	slices.SortFunc(requirements, func(a, b string) int {
 		i := strings.Index(a, " ")
 		ra, _ := strconv.ParseInt(a[1:i], 10, 64)
@@ -65,7 +65,7 @@ func includeReq(w io.Writer, r io.Reader, requirements []string) {
 	}
 }
 
-func parsereq(w io.Writer, r io.Reader) []string {
+func ParseRequirements(w io.Writer, r io.Reader) []string {
 	// use a pipe to parse sentences and just copy the data
 	r1, w1 := io.Pipe()
 	wboth := io.MultiWriter(w, w1)
