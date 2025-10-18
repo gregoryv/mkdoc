@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.11.0-dev]
+
+- Add "changelog" as non section header
+
 ## [0.10.0] 2025-10-18
 
 - Rename project to specification text processor (stp)
