@@ -7,7 +7,6 @@ import (
 	"flag"
 	"fmt"
 	"io"
-	"log"
 	"os"
 	"text/template"
 )
@@ -56,7 +55,6 @@ var (
 )
 
 func main() {
-	log.SetFlags(0)
 	fs.Usage = usage
 
 	// parse options
@@ -97,4 +95,7 @@ func main() {
 	run(stderr, out, in)
 }
 
-var handleError = log.Fatal
+var handleError = func(v ...any) {
+	fmt.Fprint(stderr, v...)
+	os.Exit(1)
+}

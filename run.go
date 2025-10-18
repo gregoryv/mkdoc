@@ -4,21 +4,19 @@ import (
 	"bytes"
 	"fmt"
 	"io"
-	"log"
 )
 
-func run(err, out io.Writer, in io.Reader) {
-	log.SetOutput(err)
+func run(stderr, stdout io.Writer, stdin io.Reader) {
 	w := &bytes.Buffer{}
 	r := &bytes.Buffer{}
-	io.Copy(r, in)
+	io.Copy(r, stdin)
 	next := func(step func()) {
 		step()
 		r, w = w, r
 	}
 
 	// first pass; include files
-	next(func() { cat(w, r, "<>") })
+	next(func() { cat(stderr, w, r, "<>") })
 
 	// parse links early
 	var links map[string]string
@@ -28,9 +26,9 @@ func run(err, out io.Writer, in io.Reader) {
 	next(func() { requirements = parsereq(w, r) })
 
 	// requirements must be indexed (#R...)
-	next(func() { checkreq(err, w, r) }) // #R8
-	next(func() { sentenceSpace(w, r) })
-	next(func() { emptyLines(w, r) })
+	next(func() { checkreq(stderr, w, r) }) // #R8
+	next(func() { sentenceSpace(stderr, w, r) })
+	next(func() { emptyLines(stderr, w, r) })
 	next(func() { includeReq(w, r, requirements) })
 
 	// lines starting with `[\d+] ...`
@@ -43,23 +41,23 @@ func run(err, out io.Writer, in io.Reader) {
 	// second pass; parse toc and index sections
 	var toc bytes.Buffer
 	cols := 69
-	next(func() { parsetoc(w, &toc, r, cols) })
-	next(func() { linksections(w, r) })
+	next(func() { parsetoc(stderr, w, &toc, r, cols) })
+	next(func() { linksections(stderr, w, r) })
 
 	// insert toc
 	next(func() { inserttoc(w, r, &toc) })
 
 	// before replacing ordinary links
-	next(func() { replaceRequirements(w, r) })
+	next(func() { replaceRequirements(stderr, w, r) })
 
 	// replace links, also includes reference links
-	next(func() { replacelinks(w, r, links) })
+	next(func() { replacelinks(stderr, w, r, links) })
 
-	next(func() { replaceSections(w, r) })
+	next(func() { replaceSections(stderr, w, r) })
 
-	fmt.Fprintln(out, htmlHeader)
-	io.Copy(out, r)
-	fmt.Fprintln(out, htmlFooter)
+	fmt.Fprintln(stdout, htmlHeader)
+	io.Copy(stdout, r)
+	fmt.Fprintln(stdout, htmlFooter)
 }
 
 const htmlHeader = `<!DOCTYPE html>

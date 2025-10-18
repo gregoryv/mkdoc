@@ -6,12 +6,11 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"log"
 	"regexp"
 )
 
 // replaceSections converts (§...) to a link to  #section-(\d+) link.
-func replaceSections(w io.Writer, r io.Reader) {
+func replaceSections(stderr, w io.Writer, r io.Reader) {
 	next := openSection
 	in := bufio.NewReader(r)
 	var err error
@@ -22,7 +21,7 @@ func replaceSections(w io.Writer, r io.Reader) {
 		}
 	}
 	if !errors.Is(err, io.EOF) {
-		log.Print(err)
+		fmt.Fprint(stderr, err)
 	}
 }
 

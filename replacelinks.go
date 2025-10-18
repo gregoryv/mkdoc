@@ -6,29 +6,28 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"log"
 	"strconv"
 	"strings"
 )
 
 // replacelinks converts [...] to a link using the given index of
 // links. If it's [\d+] it's converted to a #ref-(\d+) link.
-func replacelinks(w io.Writer, r io.Reader, links map[string]string) {
+func replacelinks(stderr, w io.Writer, r io.Reader, links map[string]string) {
 	next := openTag
 	in := bufio.NewReader(r)
 	var err error
 	for {
-		next, err = next(w, in, links)
+		next, err = next(stderr, w, in, links)
 		if err != nil || next == nil {
 			break
 		}
 	}
 	if !errors.Is(err, io.EOF) {
-		log.Print(err)
+		fmt.Fprint(stderr, err)
 	}
 }
 
-func openTag(w io.Writer, r *bufio.Reader, links map[string]string) (parseFn, error) {
+func openTag(stderr, w io.Writer, r *bufio.Reader, links map[string]string) (parseFn, error) {
 	// look for open character
 	head, err := r.ReadBytes('[')
 	if err != nil {
@@ -53,7 +52,7 @@ func openTag(w io.Writer, r *bufio.Reader, links map[string]string) (parseFn, er
 	return closeTag, nil
 }
 
-func closeTag(w io.Writer, r *bufio.Reader, links map[string]string) (parseFn, error) {
+func closeTag(stderr, w io.Writer, r *bufio.Reader, links map[string]string) (parseFn, error) {
 	// look for open character
 	text, err := r.ReadBytes(']')
 	if err != nil {
@@ -80,7 +79,7 @@ func closeTag(w io.Writer, r *bufio.Reader, links map[string]string) (parseFn, e
 	if !found {
 		w.Write([]byte{'['})
 		w.Write(text)
-		log.Printf("missing reference [%s]\n", key)
+		fmt.Fprintf(stderr, "missing reference [%s]\n", key)
 		return openTag, nil
 	}
 
@@ -89,4 +88,4 @@ func closeTag(w io.Writer, r *bufio.Reader, links map[string]string) (parseFn, e
 	return openTag, nil
 }
 
-type parseFn func(io.Writer, *bufio.Reader, map[string]string) (parseFn, error)
+type parseFn func(e, w io.Writer, r *bufio.Reader, _ map[string]string) (parseFn, error)

@@ -4,12 +4,11 @@ import (
 	"bufio"
 	"fmt"
 	"io"
-	"log"
 	"strings"
 )
 
 // emptylines warns if empty lines contains only spaces or tabs
-func emptyLines(w io.Writer, r io.Reader) {
+func emptyLines(stderr, w io.Writer, r io.Reader) {
 	s := bufio.NewScanner(r)
 
 	var lineno int
@@ -21,7 +20,11 @@ func emptyLines(w io.Writer, r io.Reader) {
 
 		tmp := strings.TrimSpace(line)
 		if len(tmp) == 0 && line != tmp {
-			log.Printf("line %v: %s\n%q only space", lineno, lastLine, line)
+			fmt.Fprintf(
+				stderr,
+				"line %v: %s\n%q only space",
+				lineno, lastLine, line,
+			)
 		}
 		lastLine = line
 	}

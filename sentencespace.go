@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"fmt"
 	"io"
-	"log"
 	"strings"
 	"unicode"
 	"unicode/utf8"
@@ -12,7 +11,7 @@ import (
 
 // sentenceSpace warns if two adjecent sentences are not separated by
 // double spaces.
-func sentenceSpace(w io.Writer, r io.Reader) {
+func sentenceSpace(stderr, w io.Writer, r io.Reader) {
 	s := bufio.NewScanner(r)
 
 	var lineno int
@@ -36,7 +35,7 @@ func sentenceSpace(w io.Writer, r io.Reader) {
 			r, _ := utf8.DecodeRuneInString(end)
 
 			if unicode.IsUpper(r) && !endsWithAbbreviation(previous) {
-				log.Printf("line %v: %s\nmissing double space between sentences", lineno, line)
+				fmt.Fprintf(stderr, "line %v: %s\nmissing double space between sentences", lineno, line)
 			}
 			previous = ends[i]
 		}

@@ -4,15 +4,14 @@ import (
 	"bufio"
 	"fmt"
 	"io"
-	"log"
 	"strings"
 )
 
-func parsetoc(w, toc io.Writer, r io.Reader, width int) {
+func parsetoc(stderr, w, toc io.Writer, r io.Reader, width int) {
 	s := bufio.NewScanner(r)
 	for s.Scan() {
 		line := s.Text()
-		s, h, ok := parseSection(line)
+		s, h, ok := parseSection(stderr, line)
 		if !ok {
 			fmt.Fprintln(w, line)
 			continue
@@ -32,11 +31,11 @@ func parsetoc(w, toc io.Writer, r io.Reader, width int) {
 	}
 }
 
-func linksections(w io.Writer, r io.Reader) {
+func linksections(stderr, w io.Writer, r io.Reader) {
 	s := bufio.NewScanner(r)
 	for s.Scan() {
 		line := s.Text()
-		s, h, ok := parseSection(line)
+		s, h, ok := parseSection(stderr, line)
 		if !ok {
 			fmt.Fprintln(w, line)
 			continue
@@ -48,14 +47,14 @@ func linksections(w io.Writer, r io.Reader) {
 	}
 }
 
-func parseSection(line string) (s, h string, ok bool) {
+func parseSection(stderr io.Writer, line string) (s, h string, ok bool) {
 	if !strings.HasPrefix(line, "§") {
 		return
 	}
 	// find section identifier
 	i := strings.Index(line, " ")
 	if i == -1 {
-		log.Print("WARNING! section has no identifier")
+		fmt.Fprint(stderr, "WARNING! section has no identifier")
 		return
 	}
 	s = strings.TrimLeft(line[:i], "§")

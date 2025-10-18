@@ -4,12 +4,11 @@ import (
 	"bufio"
 	"fmt"
 	"io"
-	"log"
 	"os"
 	"strings"
 )
 
-func cat(w io.Writer, r io.Reader, delim string) {
+func cat(stderr, w io.Writer, r io.Reader, delim string) {
 	s := bufio.NewScanner(r)
 	prefix := "<cat "
 	for s.Scan() {
@@ -20,7 +19,7 @@ func cat(w io.Writer, r io.Reader, delim string) {
 			f = strings.Trim(f, " >")
 			fh, err := os.Open(f)
 			if err != nil {
-				log.Print(err)
+				fmt.Fprint(stderr, err)
 				continue
 			}
 			io.Copy(w, fh)

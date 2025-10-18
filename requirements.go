@@ -6,12 +6,11 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"log"
 	"strings"
 )
 
 // replaceRequirements converts (#R\d+) to a link to  #requirement-(\d+) link.
-func replaceRequirements(w io.Writer, r io.Reader) {
+func replaceRequirements(stderr, w io.Writer, r io.Reader) {
 	next := openRequirement
 	in := bufio.NewReader(r)
 	var err error
@@ -22,7 +21,7 @@ func replaceRequirements(w io.Writer, r io.Reader) {
 		}
 	}
 	if !errors.Is(err, io.EOF) {
-		log.Print(err)
+		fmt.Fprint(stderr, err)
 	}
 }
 
