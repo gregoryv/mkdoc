@@ -35,7 +35,6 @@ func CheckRequirements(stderr, w io.Writer, r io.Reader) {
 		i := strings.Index(v, ")")
 		if i > 1 {
 			key := v[1:i]
-			fmt.Println(v, index, key)
 			if prevline, found := index[key]; found {
 				fmt.Fprintln(stderr, prev, line, "line:", lineno, "WARNING! duplicate", key, "defined at line:", prevline)
 				return
