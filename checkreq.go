@@ -21,6 +21,7 @@ func CheckRequirements(stderr, w io.Writer, r io.Reader) {
 	ok := true
 
 	keywords := []string{
+		// the .. NOT variants must come first
 		"MUST NOT", "SHALL NOT", "SHOULD NOT", "MUST", "REQUIRED",
 		"SHALL", "SHOULD", "RECOMMENDED", "MAY", "OPTIONAL",
 	}
