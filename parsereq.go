@@ -15,6 +15,8 @@ import (
 
 var maxLineWidth = 69 // 72 - rfc indent of 3
 
+// requirements come in with the identifier as the first word.
+// Example []string{"R101 ..."}
 func ListRequirements(w io.Writer, r io.Reader, requirements []string) {
 	slices.SortFunc(requirements, func(a, b string) int {
 		i := strings.Index(a, " ")
@@ -50,18 +52,34 @@ func ListRequirements(w io.Writer, r io.Reader, requirements []string) {
 					continue
 				}
 
-				// find last space
-				j := strings.LastIndex(req[:maxLineWidth], " ")
-				fmt.Fprintln(w, req[i:j])
-				// indentation
-				fmt.Fprint(w, strings.Repeat(" ", i))
-				// the rest
-				fmt.Fprintln(w, req[j:])
+				// print long requirements
+				printLongRequirement(w, id, req[i+1:], maxLineWidth)
+				fmt.Fprintln(w)
 				fmt.Fprintln(w)
 			}
 		} else {
 			fmt.Fprintln(w, line)
 		}
+	}
+}
+
+// prints line indented so it is aligned after the id.
+func printLongRequirement(w io.Writer, id, line string, width int) {
+	// id must be R??
+	indent := strings.Repeat(" ", len(id))
+	n := len(id)
+	words := strings.Split(line, " ")
+
+	for _, word := range words {
+		next := 1 + len(word)
+		if n+next < width {
+			fmt.Fprint(w, " ", word)
+			n += next
+			continue
+		}
+		// next line
+		n = len(id)
+		fmt.Fprint(w, "\n", indent, " ", word)
 	}
 }
 

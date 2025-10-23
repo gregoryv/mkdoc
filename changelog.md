@@ -1,7 +1,8 @@
 # Changelog
 
-## [0.11.0-dev]
+## [0.11.0] 2025-10-23
 
+- Long requirements are listed within max line width
 - Move command to cmd/stp
 - Add "changelog" as non section header
 
