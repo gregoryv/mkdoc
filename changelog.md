@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.12.1-dev]
+
+- Fix footer
+
 ## [0.12.0] 2025-10-23
 
 - Fix bug introduced in v0.11.0 which warned on each requirement.
