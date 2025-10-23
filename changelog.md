@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.12.0] 2025-10-23
+
+- Fix bug introduced in v0.11.0 which warned on each requirement.
+
 ## [0.11.0] 2025-10-23
 
 - Long requirements are listed within max line width

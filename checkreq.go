@@ -29,6 +29,7 @@ func CheckRequirements(stderr, w io.Writer, r io.Reader) {
 
 	warn := func(v string) {
 		if !strings.HasPrefix(v, "(#R") {
+			fmt.Fprintf(stderr, "%q\n", v)
 			fmt.Fprintln(stderr, prev, line, "line:", lineno, "WARNING! untagged requirement")
 			ok = false
 		}
@@ -66,21 +67,25 @@ loop:
 			}
 			checkNOT = false
 		}
-		for _, words := range keywords {
-			if i := strings.Index(line, words); i > -1 {
-				j := i + len(words)
+		for _, word := range keywords {
+			if i := strings.Index(line, word); i > -1 {
+				j := i + len(word)
 				if err == nil {
 					j++ // +1 for the newline
 				}
 				if j == len(line) {
 					// end of line
-					if words == "MUST" || words == "SHALL" || words == "SHOULD" {
+					if word == "MUST" || word == "SHALL" || word == "SHOULD" {
 						// can be followed by NOT
 						checkNOT = true
 						continue loop
 					}
 				}
+				if err == nil {
+					j--
+				}
 				warn(line[j:])
+
 				// we assume only one keywords is on each line
 				continue loop
 			}
@@ -90,9 +95,9 @@ loop:
 	if !ok {
 		fmt.Fprintln(stderr, `
 
-Each keyword as defined in RFC 2119 SHOULD be tagged with a
-requirement, ie.
+Each keyword as defined in RFC 2119 SHOULD be tagged with an
+identifier, ie.
 
-  This sentence MUST(#R1) have a tag.`)
+  This sentence MUST(#R1) have and identifier.`)
 	}
 }

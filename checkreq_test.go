@@ -58,13 +58,13 @@ func TestCheckRequirements(t *testing.T) {
 
 	cases := []string{
 		// ok
-		`   "quoted MAY ..."`,
+		`   "quoted MAY ..."`, // ignored
 		"MUST NOT(#R1)",
-		"SHALL NOT(#R2)",
-		"SHOULD NOT(#R3)",
-		"MUST(#R4)",
-		"REQUIRED(#R5)",
-		"SHALL(#R6)",
+		"\n\nSHALL NOT(#R2)\n\n",
+		"\n\nSHOULD NOT(#R3)\n\n",
+		"\n\nMUST(#R4)\n\n",
+		"\n\nREQUIRED(#R5)\n\n",
+		"\n\nSHALL(#R6)\n\n",
 		"SHOULD(#R7)",
 		"RECOMMENDED(#R8)",
 		"... MAY(#R9) ...",
