@@ -6,7 +6,6 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"strings"
 )
 
 // ReplaceRequirements converts (#R\d+) to a link to  #requirement-(\d+) link.
@@ -54,7 +53,7 @@ func requirementRune(w io.Writer, r *bufio.Reader) (pipeFn, error) {
 		return nil, err
 	}
 
-	if v == '#' {
+	if v == 'R' {
 		return closeRequirement, nil
 	}
 	w.Write([]byte("(" + string(v)))
@@ -66,11 +65,10 @@ func closeRequirement(w io.Writer, r *bufio.Reader) (pipeFn, error) {
 	text, err := r.ReadBytes(')')
 	if err != nil {
 		w.Write(text)
-		return nil, fmt.Errorf("missing right square parenthesis")
+		return nil, fmt.Errorf("missing right parenthesis")
 	}
 	key := string(text[:len(text)-1])
-	no := strings.TrimPrefix(key, "R")
-	fmt.Fprintf(w, `<sub><a id="%s" href="#%s">%s</a></sub>`, key, key, no)
+	fmt.Fprintf(w, `<sub><a id="%s" href="#%s">(R%s)</a></sub>`, key, key, key)
 
 	return openRequirement, nil
 }

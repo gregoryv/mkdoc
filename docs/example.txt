@@ -47,7 +47,7 @@ Using stdin and stdout
 
 §3.1 cat FILE
 
-Directive "&lt;cat FILE&gt;" MUST(#R1) be on a separate line, without
+Directive "&lt;cat FILE&gt;" MUST(R1) be on a separate line, without
 surrounding spaces.
 
    "&lt;cat logo.txt&gt;"
@@ -57,7 +57,7 @@ surrounding spaces.
 
 §3.2 list of requirements
 
-Directive "&lt;list of requirements&gt;" MUST(#R2) be on a separate
+Directive "&lt;list of requirements&gt;" MUST(R2) be on a separate
 line, without surrounding spaces.
 
    "&lt;list of requirements&gt;"

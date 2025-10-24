@@ -1,7 +1,8 @@
 # Changelog
 
-## [0.12.1-dev]
+## [0.13.0-dev]
 
+- Requirement identifiers as (R\d+)
 - Fix footer
 
 ## [0.12.0] 2025-10-23

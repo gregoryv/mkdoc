@@ -29,7 +29,7 @@ func CheckRequirements(stderr, w io.Writer, r io.Reader) {
 	index := make(map[string]int)
 
 	warn := func(v string) {
-		if !strings.HasPrefix(v, "(#R") {
+		if !strings.HasPrefix(v, "(R") {
 			fmt.Fprintf(stderr, "%q\n", v)
 			fmt.Fprintln(stderr, prev, line, "line:", lineno, "WARNING! untagged requirement")
 			ok = false
@@ -99,6 +99,6 @@ loop:
 Each keyword as defined in RFC 2119 SHOULD be tagged with an
 identifier, ie.
 
-  This sentence MUST(#R1) have and identifier.`)
+  This sentence MUST(R1) have and identifier.`)
 	}
 }

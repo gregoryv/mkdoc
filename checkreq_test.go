@@ -54,24 +54,24 @@ func TestCheckRequirements_err(t *testing.T) {
 }
 
 func TestCheckRequirements(t *testing.T) {
-	req := `requirement keywords MUST be followed by (#R\d)`
+	req := `requirement keywords MUST be followed by (R\d)`
 
 	cases := []string{
 		// ok
 		`   "quoted MAY ..."`, // ignored
-		"MUST NOT(#R1)",
-		"\n\nSHALL NOT(#R2)\n\n",
-		"\n\nSHOULD NOT(#R3)\n\n",
-		"\n\nMUST(#R4)\n\n",
-		"\n\nREQUIRED(#R5)\n\n",
-		"\n\nSHALL(#R6)\n\n",
-		"SHOULD(#R7)",
-		"RECOMMENDED(#R8)",
-		"... MAY(#R9) ...",
-		"OPTIONAL(#R10)",
+		"MUST NOT(R1)",
+		"\n\nSHALL NOT(R2)\n\n",
+		"\n\nSHOULD NOT(R3)\n\n",
+		"\n\nMUST(R4)\n\n",
+		"\n\nREQUIRED(R5)\n\n",
+		"\n\nSHALL(R6)\n\n",
+		"SHOULD(R7)",
+		"RECOMMENDED(R8)",
+		"... MAY(R9) ...",
+		"OPTIONAL(R10)",
 		// multiline
-		"MUST\nNOT(#R11)",
-		"MUST\n(#R12)",
+		"MUST\nNOT(R11)",
+		"MUST\n(R12)",
 	}
 
 	for _, c := range cases {
