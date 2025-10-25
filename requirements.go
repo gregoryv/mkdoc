@@ -68,7 +68,7 @@ func closeRequirement(w io.Writer, r *bufio.Reader) (pipeFn, error) {
 		return nil, fmt.Errorf("missing right parenthesis")
 	}
 	key := string(text[:len(text)-1])
-	fmt.Fprintf(w, `<sub><a id="%s" href="#%s">(R%s)</a></sub>`, key, key, key)
+	fmt.Fprintf(w, `<a id="%s" href="#%s" class="R">(R%s)</a>`, key, key, key)
 
 	return openRequirement, nil
 }
