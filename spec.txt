@@ -1,0 +1,97 @@
+             Format rules for plain-text specifications
+
+Abstract
+
+This specification defines syntax rules for authoring plain-text,
+"specification" type documents.  The emphasis on content and
+producing usefule links for requirements, sections and phrases.
+
+Table of Contents
+
+§1 Introduction
+
+Plain-text documents, eg. RFC series, have a proven track record as
+workable specifications.  These documents have been enhanced and
+clarified over time by subsequent sepcifications like the [RFC 2119].
+Specifications governing software are often written in this format.
+There is however no easy way to reference such requirements throught
+a body of text.  A test suite could e.g. use the wording of a
+requirement verbatim if it fails, but duplicating the text within a
+test is not feasible as requirements change over time.  Having a way
+to easily index all requirements and reference them elsewhere keeps
+the requirements at it's source.  Differentiating changes in plain
+text is well defined, making it a powerful way of conveing
+requirement changes over time.
+
+§1.1 Requirements
+
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+"SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+document are to be interpreted as described in [RFC 2119].
+
+Requirements are indexed according to [syhoc/v0.4.1].
+
+§2 Format Rules
+
+§2.1 Section Headings
+
+Section headings SHOULD(R1) start with the § sign followed by a level
+and a heading.
+
+    "§9.1 Example Heading..."
+
+§2.1 Links to Sections
+
+Links to sections MUST(R2) be written within parentheses.
+
+    "... (§9.1) ..."
+
+Transformed links to sections SHOULD(R3) replace the § sign with the
+word 'section'.
+
+    "... (section 9.1) ..."
+
+§2.2 External Links
+
+Within a body of text, external links and their URL make them less
+readable.  By separating the phrase that should be linked and the URL
+readability is improved.
+
+External link phrase SHOULD(R4) be written within square brackets.
+
+    "... [some phrase] ..."
+
+URL's of external link phrases SHOULD(R5) be defined on separate
+lines.  Preferably at the end of a document or section.
+
+    "[some phrase]: https://example.com"
+
+Lines defining URL's for external link phrases MAY(R9) be removed
+from the final document.
+
+§2.3 Internal Reference Links
+
+Internal reference links SHOULD(R6) be written within square
+brackets.
+
+    "... see [1] ..."
+
+If a internal reference link is a positive integer it refer to a list
+of references in the same document.  In this document see (§3).
+
+§2.4 Internal Requirement Links
+
+Within a specification requirements are often related and have plenty
+of cross references.  Internal requirement links SHOULD(R13) be
+written within square brackets.
+
+   "... see [#R99] ..."
+
+Internal requirement links MUST(R12) reference existing requirement.
+
+
+[RFC 2119]: https://www.ietf.org/rfc/rfc2119
+[specification text processor (stp)]: https://github.com/gregoryv/stp
+[source of this document]: https://gregoryv.github.io/syhoc/spec.txt
+[syhoc/v0.4.1]: https://gregoryv.github.io/syhoc/v0.4.1
+
